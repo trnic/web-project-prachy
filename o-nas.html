@@ -59,6 +59,7 @@ p {
   height: 80px; 
   background: #ffffff; 
   display: flex;
+  justify-content: space-between;
   align-items: center; 
   padding: 0 60px;
   z-index: 1000;
@@ -72,6 +73,10 @@ p {
   text-decoration: none;
   letter-spacing: 2px; 
 }
+
+.nav-right{display:flex;align-items:center;gap:18px}
+.nav-right .prod-link{color:#111;text-decoration:none;font-weight:600;padding:8px 14px;border-radius:8px;background:rgba(0,0,0,0.03);transition:background .18s}
+.nav-right .prod-link:hover{background:rgba(0,0,0,0.06)}
 
 /* ============================= */
 /* HERO */
@@ -196,6 +201,10 @@ footer {
   }
 }
 
+footer{
+  padding: 35px 10%;
+  }
+
 </style>
 </head>
 
@@ -205,6 +214,9 @@ footer {
   <a href="index.html" class="brand">
     <img src="obrazky/Logo_Silence_2 tintes.png" alt="SILENCE" style="height:130px;">
   </a>
+  <nav class="nav-right" aria-label="Produkty">
+    <a href="nabidka.html" class="prod-link">Produkty</a>
+  </nav>
 </header>
 
 <section class="hero fade-in">
@@ -333,7 +345,7 @@ O technologiích a přístupu SILENCE k elektromobilitě informují odborné por
 <!-- =============================== -->
 
 <footer>
-  © 2026 SILENCE. All rights reserved.
+  <img src="obrazky/SILENCE NEGRO.png" alt="silence" style="height:40px;" >
 </footer>
 
 <script>
