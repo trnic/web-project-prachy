@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>O společnosti | SILENCE</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+/* ============================= */
+/* GLOBAL */
+/* ============================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: #f6f7f8;
+  color: #111;
+  padding-top: 80px;
+  overflow-x: hidden;
+}
+
+section {
+  padding: 120px 8%;
+}
+
+h1, h2 {
+  font-weight: 600;
+  letter-spacing: -0.5px;
+}
+
+h3 {
+  font-weight: 600;
+}
+
+p {
+  line-height: 1.8;
+  color: #444;
+  font-weight: 400;
+}
+
+/* ============================= */
+/* NAVIGATION */
+/* ============================= */
+
+.top-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px; 
+  background: #ffffff; 
+  display: flex;
+  align-items: center; 
+  padding: 0 60px;
+  z-index: 1000;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.brand {
+  font-weight: 700;  
+  font-size: 24px;   
+  color: #111111;    
+  text-decoration: none;
+  letter-spacing: 2px; 
+}
+
+/* ============================= */
+/* HERO */
+/* ============================= */
+
+.hero {
+  text-align: center;
+  padding-top: 140px;
+}
+
+.hero h1 {
+  font-size: 48px;
+  margin-bottom: 25px;
+}
+
+.hero p {
+  max-width: 700px;
+  margin: 0 auto;
+  font-size: 18px;
+}
+
+/* ============================= */
+/* CONTENT BLOCK */
+/* ============================= */
+
+.content-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.content-text h2 {
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+.content-text p {
+  margin-bottom: 20px;
+}
+
+.card {
+  background: white;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.05);
+  transition: transform 0.4s ease;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+}
+
+/* ============================= */
+/* VALUES / PARTNERS */
+/* ============================= */
+
+.values {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 40px;
+  margin-top: 80px;
+}
+
+.value-box {
+  background: white;
+  padding: 40px;
+  border-radius: 20px;
+  text-align: left;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.04);
+  transition: 0.4s ease;
+}
+
+.value-box:hover {
+  transform: translateY(-8px);
+}
+
+.value-box h3 {
+  margin-bottom: 15px;
+  font-size: 20px;
+}
+
+/* ============================= */
+/* FOOTER */
+/* ============================= */
+
+footer {
+  text-align: center;
+  padding: 60px 8%;
+  background: #fff;
+  border-top: 1px solid rgba(0,0,0,0.05);
+  font-size: 14px;
+  color: #777;
+}
+
+/* ============================= */
+/* ANIMATIONS */
+/* ============================= */
+
+.fade-in {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: 1s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============================= */
+/* RESPONSIVE */
+/* ============================= */
+
+@media(max-width: 900px){
+  .content-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero h1 {
+    font-size: 36px;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<header class="top-nav">
+  <a href="index.html" class="brand">
+    <span class="brand-text">SILENCE</span>
+  </a>
+</header>
+
+<section class="hero fade-in">
+  <h1>Budoucnost městské mobility</h1>
+  <p>
+    SILENCE je španělská společnost založená v Barceloně, která se specializuje
+    na vývoj a výrobu 100% elektrických vozidel pro městskou mobilitu.
+    Jejím cílem je nabídnout tiché, udržitelné a technologicky vyspělé řešení
+    pro moderní města.
+  </p>
+</section>
+
+<section class="fade-in">
+  <div class="content-grid">
+    <div class="content-text">
+      <h2>Naše historie</h2>
+      <p>
+        Společnost SILENCE byla založena s jasnou vizí – transformovat způsob,
+        jakým se pohybujeme ve městech. Od svého vzniku se soustředí na
+        inovace v oblasti elektrické mobility a vývoj vlastních bateriových
+        systémů.
+      </p>
+      <p>
+        Díky silnému výzkumu a vývoji dokázala firma vytvořit řešení,
+        která kombinují výkon, efektivitu a dlouhou životnost.
+        SILENCE se rychle stala jedním z lídrů v oblasti elektrických skútrů
+        a lehkých městských vozidel v Evropě.
+      </p>
+    </div>
+
+    <div class="card">
+      <h2>Výroba & Inovace</h2>
+      <p>
+        SILENCE vyrábí svá vozidla ve vlastních moderních závodech ve Španělsku.
+        Klíčovým prvkem je vyjímatelná baterie s kolečky, která umožňuje
+        snadné nabíjení doma nebo v kanceláři.
+      </p>
+      <p>
+        Firma klade důraz na kvalitu, bezpečnost a ekologii.
+        Každý produkt je navržen tak, aby minimalizoval dopad na životní prostředí.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="fade-in">
+  <h2 style="text-align:center; margin-bottom:40px;">Naše hodnoty</h2>
+
+  <div class="values">
+    <div class="value-box">
+      <h3>Udržitelnost</h3>
+      <p>Minimalizujeme emise a podporujeme čistší budoucnost měst.</p>
+    </div>
+
+    <div class="value-box">
+      <h3>Inovace</h3>
+      <p>Vyvíjíme vlastní technologie baterií a inteligentních systémů.</p>
+    </div>
+
+    <div class="value-box">
+      <h3>Kvalita</h3>
+      <p>Každý produkt splňuje přísné evropské standardy.</p>
+    </div>
+
+    <div class="value-box">
+      <h3>Design</h3>
+      <p>Minimalistický a moderní vzhled inspirovaný budoucností.</p>
+    </div>
+  </div>
+</section>
+
+<!-- =============================== -->
+<!-- NOVÉ SEKCE -->
+<!-- =============================== -->
+
+<section class="fade-in">
+  <h2 style="text-align:center; margin-bottom:40px;">Naše mise</h2>
+  <p style="max-width:800px; margin:0 auto; text-align:center; font-size:18px;">
+    Naší misí je přinášet tiché, čisté a inovativní řešení mobility do měst po celém světě. 
+    Usilujeme o to, aby městská doprava byla bezpečnější, ekologičtější a pohodlnější pro každého.
+  </p>
+</section>
+
+<section class="fade-in">
+  <h2 style="text-align:center; margin-bottom:40px;">Technologie</h2>
+  <div class="content-grid">
+    <div class="card">
+      <h3>Vyjímatelné baterie</h3>
+      <p>Baterie s kolečky umožňují snadné nabíjení doma nebo v kanceláři a zajišťují dlouhou životnost.</p>
+    </div>
+    <div class="card">
+      <h3>Chytré systémy</h3>
+      <p>Inteligentní řízení energie a telemetrie, která optimalizuje výkon a bezpečnost vozidel.</p>
+    </div>
+  </div>
+</section>
+
+<section class="fade-in">
+  <h2 style="text-align:center; margin-bottom:40px;">Partneři & Certifikace</h2>
+  <div class="values">
+    <div class="value-box">
+      <h3>EU Certifikace</h3>
+      <p>Všechny produkty splňují přísné evropské standardy kvality a bezpečnosti.</p>
+    </div>
+    <div class="value-box">
+      <h3>Spolupráce s městy</h3>
+      <p>SILENCE úzce spolupracuje s městy při zavádění udržitelné městské mobility.</p>
+    </div>
+    <div class="value-box">
+      <h3>Globální partneři</h3>
+      <p>Navazujeme partnerství s lídry v oblasti technologií a udržitelného rozvoje.</p>
+    </div>
+  </div>
+</section>
+
+<section class="fade-in">
+  <h2 style="text-align:center; margin-bottom:40px;">Tisk & Média</h2>
+  <p style="max-width:800px; margin:0 auto; text-align:center; font-size:18px;">
+    Společnost SILENCE pravidelně vydává tiskové zprávy o svých inovacích a nových modelech, například o uvedení skútru S05 Weekender. Značka rozšiřuje svou působnost v evropských městech a spolupracuje s partnery na projektech udržitelné městské mobility, včetně dodávek elektrických skútrů pro firmy ve Španělsku a Portugalsku.
+O technologiích a přístupu SILENCE k elektromobilitě informují odborné portály a média zaměřená na elektrická vozidla a chytrou dopravu, která oceňují například vyjímatelné baterie a inovativní řešení pro městskou mobilitu.</a>
+  </p>
+</section>
+
+<!-- =============================== -->
+<!-- FOOTER -->
+<!-- =============================== -->
+
+<footer>
+  © 2026 SILENCE. All rights reserved.
+</footer>
+
+<script>
+
+/* Scroll efekt navigace */
+window.addEventListener("scroll", function() {
+  const nav = document.querySelector(".top-nav");
+  nav.classList.toggle("scrolled", window.scrollY > 20);
+});
+
+/* Fade-in animace */
+const faders = document.querySelectorAll(".fade-in");
+
+const appearOptions = {
+  threshold: 0.2
+};
+
+const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    entry.target.classList.add("visible");
+    observer.unobserve(entry.target);
+  });
+}, appearOptions);
+
+faders.forEach(fader => {
+  appearOnScroll.observe(fader);
+});
+
+</script>
+
+</body>
+</html>
