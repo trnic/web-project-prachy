@@ -1,381 +1,329 @@
 <!DOCTYPE html>
 <html lang="cs">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>O společnosti | SILENCE</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O společnosti | SILENCE</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+    <style>
+        /* ============================= */
+        /* DESIGN SYSTÉM */
+        /* ============================= */
+        :root {
+            --bg: #f8f9fa;
+            --surface: #ffffff;
+            --text-main: #111111;
+            --text-muted: #444444;
+            --accent: #00d084;
+            --shadow: 0 20px 40px rgba(0,0,0,0.04);
+            --radius: 24px;
+            --transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
 
-<style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
-/* ============================= */
-/* GLOBAL */
-/* ============================= */
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text-main);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+        /* ============================= */
+        /* NAVIGACE */
+        /* ============================= */
+        .top-nav {
+            position: fixed;
+            top: 0; width: 100%; height: 80px;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(15px);
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 0 8%; z-index: 1000;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            transition: var(--transition);
+        }
 
-body {
-  font-family: 'Inter', sans-serif;
-  background: #f6f7f8;
-  color: #111;
-  padding-top: 80px;
-  overflow-x: hidden;
-}
+        .top-nav.scrolled { height: 70px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
 
-section {
-  padding: 120px 8%;
-}
+        .brand { text-decoration: none; display: flex; align-items: center; }
+        .brand img { height: 50px; transition: var(--transition); }
 
-h1, h2 {
-  font-weight: 600;
-  letter-spacing: -0.5px;
-}
+        .nav-right .prod-link {
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: 700;
+            padding: 12px 28px;
+            border-radius: 100px;
+            background: var(--text-main);
+            color: white;
+            transition: var(--transition);
+        }
 
-h3 {
-  font-weight: 600;
-}
+        .nav-right .prod-link:hover { transform: scale(1.05); background: var(--accent); }
 
-p {
-  line-height: 1.8;
-  color: #444;
-  font-weight: 400;
-}
+        /* ============================= */
+        /* HERO SEKCE */
+        /* ============================= */
+        .hero {
+            padding: 180px 8% 100px;
+            text-align: center;
+            background: radial-gradient(circle at top, #e9fcf5 0%, #f8f9fa 50%);
+        }
 
-/* ============================= */
-/* NAVIGATION */
-/* ============================= */
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            margin-bottom: 25px;
+            letter-spacing: -0.04em;
+        }
 
-.top-nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 80px; 
-  background: #ffffff; 
-  display: flex;
-  justify-content: space-between;
-  align-items: center; 
-  padding: 0 60px;
-  z-index: 1000;
-  border-bottom: 1px solid rgba(0,0,0,0.05);
-}
+        .hero p {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.2rem;
+            color: var(--text-muted);
+        }
 
-.brand {
-  font-weight: 700;  
-  font-size: 24px;   
-  color: #111111;    
-  text-decoration: none;
-  letter-spacing: 2px; 
-}
+        /* ============================= */
+        /* BENTO GRID & CONTENT */
+        /* ============================= */
+        section { padding: 80px 8%; }
 
-.nav-right{display:flex;align-items:center;gap:18px}
-.nav-right .prod-link{color:#111;text-decoration:none;font-weight:600;padding:8px 14px;border-radius:8px;background:rgba(0,0,0,0.03);transition:background .18s}
-.nav-right .prod-link:hover{background:rgba(0,0,0,0.06)}
+        .bento-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 30px;
+        }
 
-/* ============================= */
-/* HERO */
-/* ============================= */
+        .card {
+            background: var(--surface);
+            padding: 50px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(0,0,0,0.03);
+            transition: var(--transition);
+        }
 
-.hero {
-  text-align: center;
-  padding-top: 140px;
-}
+        .card:hover { transform: translateY(-10px); box-shadow: 0 30px 60px rgba(0,0,0,0.08); }
 
-.hero h1 {
-  font-size: 48px;
-  margin-bottom: 25px;
-}
+        h2 { font-size: 2.2rem; margin-bottom: 20px; font-weight: 700; letter-spacing: -0.02em; }
+        h3 { font-size: 1.4rem; margin-bottom: 15px; }
 
-.hero p {
-  max-width: 700px;
-  margin: 0 auto;
-  font-size: 18px;
-}
+        /* ============================= */
+        /* VALUES GRID */
+        /* ============================= */
+        .values-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 50px;
+        }
 
-/* ============================= */
-/* CONTENT BLOCK */
-/* ============================= */
+        .value-box {
+            background: var(--surface);
+            padding: 40px;
+            border-radius: var(--radius);
+            transition: var(--transition);
+            border: 1px solid transparent;
+        }
 
-.content-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  align-items: center;
-}
+        .value-box:hover { border-color: var(--accent); background: #f0fff9; }
 
-.content-text h2 {
-  font-size: 32px;
-  margin-bottom: 20px;
-}
+        /* ============================= */
+        /* DARK SECTION (PRO MISE) */
+        /* ============================= */
+        .dark-section {
+            background: #111;
+            color: white;
+            border-radius: 50px;
+            margin: 40px 2%;
+            text-align: center;
+        }
 
-.content-text p {
-  margin-bottom: 20px;
-}
+        .dark-section h2, .dark-section p { color: white; }
 
-.card {
-  background: white;
-  padding: 40px;
-  border-radius: 20px;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.05);
-  transition: transform 0.4s ease;
-}
+        /* ============================= */
+        /* ANIMACE */
+        /* ============================= */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s ease-out;
+        }
 
-.card:hover {
-  transform: translateY(-10px);
-}
+        .reveal.active { opacity: 1; transform: translateY(0); }
 
-/* ============================= */
-/* VALUES / PARTNERS */
-/* ============================= */
+        /* ============================= */
+        /* RESPONSIVE */
+        /* ============================= */
+        @media (max-width: 1000px) {
+            .bento-grid { grid-template-columns: 1fr; }
+            section { padding: 60px 5%; }
+        }
 
-.values {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 40px;
-  margin-top: 80px;
-}
-
-.value-box {
-  background: white;
-  padding: 40px;
-  border-radius: 20px;
-  text-align: left;
-  box-shadow: 0 15px 40px rgba(0,0,0,0.04);
-  transition: 0.4s ease;
-}
-
-.value-box:hover {
-  transform: translateY(-8px);
-}
-
-.value-box h3 {
-  margin-bottom: 15px;
-  font-size: 20px;
-}
-
-/* ============================= */
-/* FOOTER */
-/* ============================= */
-
-footer {
-  text-align: center;
-  padding: 60px 8%;
-  background: #fff;
-  border-top: 1px solid rgba(0,0,0,0.05);
-  font-size: 14px;
-  color: #777;
-}
-
-/* ============================= */
-/* ANIMATIONS */
-/* ============================= */
-
-.fade-in {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: 1s ease;
-}
-
-.fade-in.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* ============================= */
-/* RESPONSIVE */
-/* ============================= */
-
-@media(max-width: 900px){
-  .content-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .hero h1 {
-    font-size: 36px;
-  }
-}
-
-footer{
-  padding: 35px 10%;
-  }
-
-</style>
+        footer {
+            text-align: center;
+            padding: 80px 5%;
+            background: white;
+            border-top: 1px solid rgba(0,0,0,0.05);
+        }
+    </style>
 </head>
 
 <body>
 
-<header class="top-nav">
-  <a href="index.html" class="brand">
-    <img src="obrazky/Logo_Silence_2 tintes.png" alt="SILENCE" style="height:130px;">
-  </a>
-  <nav class="nav-right" aria-label="Produkty">
-    <a href="nabidka.html" class="prod-link">Produkty</a>
-  </nav>
-</header>
+    <header class="top-nav">
+        <a href="index.html" class="brand">
+            <img src="obrazky/Logo_Silence_2 tintes.png" alt="SILENCE" style="height:110px;">
+        </a>
+        <nav class="nav-right" aria-label="Produkty">
+            <a href="nabidka.html" class="prod-link">Produkty</a>
+        </nav>
+    </header>
 
-<section class="hero fade-in">
-  <h1>Budoucnost městské mobility</h1>
-  <p>
-    SILENCE je španělská společnost založená v Barceloně, která se specializuje
-    na vývoj a výrobu 100% elektrických vozidel pro městskou mobilitu.
-    Jejím cílem je nabídnout tiché, udržitelné a technologicky vyspělé řešení
-    pro moderní města.
-  </p>
-</section>
+    <main>
+        <section class="hero reveal">
+            <h1>Budoucnost městské mobility</h1>
+            <p>
+                SILENCE je španělská společnost založená v Barceloně, která se specializuje
+                na vývoj a výrobu 100% elektrických vozidel pro městskou mobilitu.
+                Jejím cílem je nabídnout tiché, udržitelné a technologicky vyspělé řešení
+                pro moderní města.
+            </p>
+        </section>
 
-<section class="fade-in">
-  <div class="content-grid">
-    <div class="content-text">
-      <h2>Naše historie</h2>
-      <p>
-        Společnost SILENCE byla založena s jasnou vizí – transformovat způsob,
-        jakým se pohybujeme ve městech. Od svého vzniku se soustředí na
-        inovace v oblasti elektrické mobility a vývoj vlastních bateriových
-        systémů.
-      </p>
-      <p>
-        Díky silnému výzkumu a vývoji dokázala firma vytvořit řešení,
-        která kombinují výkon, efektivitu a dlouhou životnost.
-        SILENCE se rychle stala jedním z lídrů v oblasti elektrických skútrů
-        a lehkých městských vozidel v Evropě.
-      </p>
-    </div>
+        <section>
+            <div class="bento-grid">
+                <div class="card reveal">
+                    <h2>Naše historie</h2>
+                    <p>
+                        Společnost SILENCE byla založena s jasnou vizí – transformovat způsob,
+                        jakým se pohybujeme ve městech. Od svého vzniku se soustředí na
+                        inovace v oblasti elektrické mobility a vývoj vlastních bateriových
+                        systémů.
+                    </p>
+                    <p>
+                        Díky silnému výzkumu a vývoji dokázala firma vytvořit řešení,
+                        která kombinují výkon, efektivitu a dlouhou životnost.
+                        SILENCE se rychle stala jedním z lídrů v oblasti elektrických skútrů
+                        a lehkých městských vozidel v Evropě.
+                    </p>
+                </div>
 
-    <div class="card">
-      <h2>Výroba & Inovace</h2>
-      <p>
-        SILENCE vyrábí svá vozidla ve vlastních moderních závodech ve Španělsku.
-        Klíčovým prvkem je vyjímatelná baterie s kolečky, která umožňuje
-        snadné nabíjení doma nebo v kanceláři.
-      </p>
-      <p>
-        Firma klade důraz na kvalitu, bezpečnost a ekologii.
-        Každý produkt je navržen tak, aby minimalizoval dopad na životní prostředí.
-      </p>
-    </div>
-  </div>
-</section>
+                <div class="card reveal" style="background: #f1fcf8; border-color: #d1f7e8;">
+                    <h2>Výroba & Inovace</h2>
+                    <p>
+                        SILENCE vyrábí svá vozidla ve vlastních moderních závodech ve Španělsku.
+                        Klíčovým prvkem je vyjímatelná baterie s kolečky, která umožňuje
+                        snadné nabíjení doma nebo v kanceláři.
+                    </p>
+                    <p>
+                        Firma klade důraz na kvalitu, bezpečnost a ekologii.
+                        Každý produkt je navržen tak, aby minimalizoval dopad na životní prostředí.
+                    </p>
+                </div>
+            </div>
+        </section>
 
-<section class="fade-in">
-  <h2 style="text-align:center; margin-bottom:40px;">Naše hodnoty</h2>
+        <section class="reveal">
+            <h2 style="text-align:center; margin-bottom:40px;">Naše hodnoty</h2>
+            <div class="values-container">
+                <div class="value-box">
+                    <h3>Udržitelnost</h3>
+                    <p>Minimalizujeme emise a podporujeme čistší budoucnost měst.</p>
+                </div>
+                <div class="value-box">
+                    <h3>Inovace</h3>
+                    <p>Vyvíjíme vlastní technologie baterií a inteligentních systémů.</p>
+                </div>
+                <div class="value-box">
+                    <h3>Kvalita</h3>
+                    <p>Každý produkt splňuje přísné evropské standardy.</p>
+                </div>
+                <div class="value-box">
+                    <h3>Design</h3>
+                    <p>Minimalistický a moderní vzhled inspirovaný budoucností.</p>
+                </div>
+            </div>
+        </section>
 
-  <div class="values">
-    <div class="value-box">
-      <h3>Udržitelnost</h3>
-      <p>Minimalizujeme emise a podporujeme čistší budoucnost měst.</p>
-    </div>
+        <section class="dark-section reveal">
+            <div style="padding: 80px 10%;">
+                <h2>Naše mise</h2>
+                <p style="max-width:800px; margin:20px auto 0; font-size:1.2rem; opacity: 0.9;">
+                    Naší misí je přinášet tiché, čisté a inovativní řešení mobility do měst po celém světě. 
+                    Usilujeme o to, aby městská doprava byla bezpečnější, ekologičtější a pohodlnější pro každého.
+                </p>
+            </div>
+        </section>
 
-    <div class="value-box">
-      <h3>Inovace</h3>
-      <p>Vyvíjíme vlastní technologie baterií a inteligentních systémů.</p>
-    </div>
+        <section class="reveal">
+            <h2 style="text-align:center; margin-bottom:40px;">Technologie</h2>
+            <div class="bento-grid">
+                <div class="card">
+                    <h3>Vyjímatelné baterie</h3>
+                    <p>Baterie s kolečky umožňují snadné nabíjení doma nebo v kanceláři a zajišťují dlouhou životnost.</p>
+                </div>
+                <div class="card">
+                    <h3>Chytré systémy</h3>
+                    <p>Inteligentní řízení energie a telemetrie, která optimalizuje výkon a bezpečnost vozidel.</p>
+                </div>
+            </div>
+        </section>
 
-    <div class="value-box">
-      <h3>Kvalita</h3>
-      <p>Každý produkt splňuje přísné evropské standardy.</p>
-    </div>
+        <section class="reveal">
+            <h2 style="text-align:center; margin-bottom:40px;">Partneři & Certifikace</h2>
+            <div class="values-container">
+                <div class="value-box">
+                    <h3>EU Certifikace</h3>
+                    <p>Všechny produkty splňují přísné evropské standardy kvality a bezpečnosti.</p>
+                </div>
+                <div class="value-box">
+                    <h3>Spolupráce s městy</h3>
+                    <p>SILENCE úzce spolupracuje s městy při zavádění udržitelné městské mobility.</p>
+                </div>
+                <div class="value-box">
+                    <h3>Globální partneři</h3>
+                    <p>Navazujeme partnerství s lídry v oblasti technologií a udržitelného rozvoje.</p>
+                </div>
+            </div>
+        </section>
 
-    <div class="value-box">
-      <h3>Design</h3>
-      <p>Minimalistický a moderní vzhled inspirovaný budoucností.</p>
-    </div>
-  </div>
-</section>
+        <section class="reveal" style="background: white; border-radius: 50px; margin-bottom: 40px;">
+            <h2 style="text-align:center; margin-bottom:40px;">Tisk & Média</h2>
+            <p style="max-width:900px; margin:0 auto; text-align:center; font-size:1.1rem; color: #666;">
+                Společnost SILENCE pravidelně vydává tiskové zprávy o svých inovacích a nových modelech, například o uvedení skútru S05 Weekender. Značka rozšiřuje svou působnost v evropských městech a spolupracuje s partnery na projektech udržitelné městské mobility, včetně dodávek elektrických skútrů pro firmy ve Španělsku a Portugalsku. O technologiích a přístupu SILENCE k elektromobilitě informují odborné portály a média zaměřená na elektrická vozidla a chytrou dopravu, která oceňují například vyjímatelné baterie a inovativní řešení pro městskou mobilitu.
+            </p>
+        </section>
+    </main>
 
-<!-- =============================== -->
-<!-- NOVÉ SEKCE -->
-<!-- =============================== -->
+    <footer>
+        <img src="obrazky/SILENCE NEGRO.png" alt="silence" style="height:40px;">
+        <p style="margin-top: 20px; font-size: 0.9rem; color: #999;">&copy; 2024SILENCE. Všechna práva vyhrazena.</p>
+    </footer>
 
-<section class="fade-in">
-  <h2 style="text-align:center; margin-bottom:40px;">Naše mise</h2>
-  <p style="max-width:800px; margin:0 auto; text-align:center; font-size:18px;">
-    Naší misí je přinášet tiché, čisté a inovativní řešení mobility do měst po celém světě. 
-    Usilujeme o to, aby městská doprava byla bezpečnější, ekologičtější a pohodlnější pro každého.
-  </p>
-</section>
+    <script>
+        // Scroll Reveal
+        const observerOptions = { threshold: 0.1 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
 
-<section class="fade-in">
-  <h2 style="text-align:center; margin-bottom:40px;">Technologie</h2>
-  <div class="content-grid">
-    <div class="card">
-      <h3>Vyjímatelné baterie</h3>
-      <p>Baterie s kolečky umožňují snadné nabíjení doma nebo v kanceláři a zajišťují dlouhou životnost.</p>
-    </div>
-    <div class="card">
-      <h3>Chytré systémy</h3>
-      <p>Inteligentní řízení energie a telemetrie, která optimalizuje výkon a bezpečnost vozidel.</p>
-    </div>
-  </div>
-</section>
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-<section class="fade-in">
-  <h2 style="text-align:center; margin-bottom:40px;">Partneři & Certifikace</h2>
-  <div class="values">
-    <div class="value-box">
-      <h3>EU Certifikace</h3>
-      <p>Všechny produkty splňují přísné evropské standardy kvality a bezpečnosti.</p>
-    </div>
-    <div class="value-box">
-      <h3>Spolupráce s městy</h3>
-      <p>SILENCE úzce spolupracuje s městy při zavádění udržitelné městské mobility.</p>
-    </div>
-    <div class="value-box">
-      <h3>Globální partneři</h3>
-      <p>Navazujeme partnerství s lídry v oblasti technologií a udržitelného rozvoje.</p>
-    </div>
-  </div>
-</section>
-
-<section class="fade-in">
-  <h2 style="text-align:center; margin-bottom:40px;">Tisk & Média</h2>
-  <p style="max-width:800px; margin:0 auto; text-align:center; font-size:18px;">
-    Společnost SILENCE pravidelně vydává tiskové zprávy o svých inovacích a nových modelech, například o uvedení skútru S05 Weekender. Značka rozšiřuje svou působnost v evropských městech a spolupracuje s partnery na projektech udržitelné městské mobility, včetně dodávek elektrických skútrů pro firmy ve Španělsku a Portugalsku.
-O technologiích a přístupu SILENCE k elektromobilitě informují odborné portály a média zaměřená na elektrická vozidla a chytrou dopravu, která oceňují například vyjímatelné baterie a inovativní řešení pro městskou mobilitu.</a>
-  </p>
-</section>
-
-<!-- =============================== -->
-<!-- FOOTER -->
-<!-- =============================== -->
-
-<footer>
-  <img src="obrazky/SILENCE NEGRO.png" alt="silence" style="height:40px;" >
-</footer>
-
-<script>
-
-/* Scroll efekt navigace */
-window.addEventListener("scroll", function() {
-  const nav = document.querySelector(".top-nav");
-  nav.classList.toggle("scrolled", window.scrollY > 20);
-});
-
-/* Fade-in animace */
-const faders = document.querySelectorAll(".fade-in");
-
-const appearOptions = {
-  threshold: 0.2
-};
-
-const appearOnScroll = new IntersectionObserver(function(entries, observer) {
-  entries.forEach(entry => {
-    if (!entry.isIntersecting) return;
-    entry.target.classList.add("visible");
-    observer.unobserve(entry.target);
-  });
-}, appearOptions);
-
-faders.forEach(fader => {
-  appearOnScroll.observe(fader);
-});
-
-</script>
-
+        // Nav Scroll Effect
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('.top-nav');
+            if (window.scrollY > 50) nav.classList.add('scrolled');
+            else nav.classList.remove('scrolled');
+        });
+    </script>
 </body>
 </html>
