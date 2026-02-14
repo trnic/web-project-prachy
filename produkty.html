@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Silence S04 — Nabídka vozidel</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<header class="top-nav">
+	<a href="index.html" class="brand">
+		<img src="obrazky/Logo_Silence_2 tintes.png" alt="SILENCE" style="height:70px;">
+	</a>
+</header>
+
+<section class="hero fade-in">
+	<h1>Silence S04 (2015)</h1>
+	<p>
+		Silence S04 je městský elektrický skútr od španělské značky SILENCE. Nabízí tichý provoz,
+		snadnou manipulaci a praktickou vyjímatelnou baterii — ideální pro každodenní dojíždění ve městě.
+	</p>
+</section>
+
+<section class="fade-in">
+	<div class="content-grid">
+		<div class="card">
+			<div class="product">
+				<div class="product-image">
+					<img id="product-img" src="obrazky/20240828_070710.jpg" alt="Silence S04">
+				</div>
+			</div>
+		</div>
+
+				<div class="right-text" id="right-text">
+					<div class="product-info">
+						<h2 id="product-title">Silence S04</h2>
+						<p id="product-year">Rok: <span></span></p>
+						<p id="product-price">Cena: <span></span></p>
+						<ul id="product-features"></ul>
+						<p>Vybavení: Tempomat, LED osvětlení, ergonomické sedlo a prostorný úložný prostor pod sedlem.</p>
+						<button id="contact-btn">Zaujalo mě — kontakt</button>
+					</div>
+					<div class="details-flex">
+						<div class="col">
+							<p>
+								Model S04 z roku 2015 je koncipován pro městský provoz. Díky elektrickému pohonu poskytuje okamžitý točivý moment, tichý chod
+								a nízké provozní náklady. Vyjímatelná baterie umožňuje nabíjení mimo vozidlo a prodlužuje flexibilitu používání.
+							</p>
+							<p>
+								Vyjímatelné baterie (trolley typ) zvyšují praktičnost pro uživatele bez garáže a umožňují nabíjení kdekoli.
+							</p>
+						</div>
+						<div class="col">
+							<p>
+								Dojezd závisí na stavu baterie a stylu jízdy — běžně 75–149 km podle počtu baterií a homologace (WMTC u L7e).
+							</p>
+							<p>
+								Motor nabízí dobrý výkon pro městský provoz (L6e: ~6 kW; L7e: až 14 kW) a zrychlení do 50 km/h pod 7 s u vybraných verzí.
+							</p>
+						</div>
+					</div>
+				</div>
+	</div>
+</section>
+
+<section class="fade-in">
+	<h2 style="text-align:center; margin-bottom:20px;">Technologie & Bezpečnost</h2>
+	<div class="content-grid tech-cards">
+		<div class="card">
+			<h3>Vyjímatelné baterie</h3>
+			<p>Baterie snadno vyjmete a odvezete domů k nabíjení. To zvyšuje praktičnost pro uživatele bez garáže.</p>
+		</div>
+		<div class="card">
+			<h3>Bezpečnost</h3>
+			<p>Robustní konstrukce rámu, kvalitní brzdový systém a dobré osvětlení zvyšují bezpečnost při městském provozu.</p>
+		</div>
+	</div>
+</section>
+
+<section class="fade-in">
+	<h2 style="text-align:center; margin-bottom:20px;">Proč zvolit Silence S04</h2>
+	<div class="values">
+		<div class="value-box">
+			<h3>Úspora nákladů</h3>
+			<p>Nízké náklady na provoz a údržbu ve srovnání s benzinovými skútry.</p>
+		</div>
+		<div class="value-box">
+			<h3>Ekologie</h3>
+			<p>Bez emisí lokálních zplodin — vhodné pro městské zóny se zvýšenými požadavky na čistotu vzduchu.</p>
+		</div>
+		<div class="value-box">
+			<h3>Pohodlí</h3>
+			<p>Komfortní sedlo, jednoduché ovládání a praktické úložiště.</p>
+		</div>
+	</div>
+</section>
+
+<footer>
+	© 2026 SILENCE. All rights reserved.
+</footer>
+
+<script src="js/product.js" defer></script>
+
+<script>
+/* Scroll efekt navigace */
+window.addEventListener("scroll", function() {
+	const nav = document.querySelector(".top-nav");
+	if (!nav) return;
+	nav.classList.toggle("scrolled", window.scrollY > 20);
+});
+
+/* Fade-in animace */
+const faders = document.querySelectorAll(".fade-in");
+
+const appearOptions = { threshold: 0.2 };
+
+const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+	entries.forEach(entry => {
+		if (!entry.isIntersecting) return;
+		entry.target.classList.add("visible");
+		observer.unobserve(entry.target);
+	});
+}, appearOptions);
+
+faders.forEach(fader => { appearOnScroll.observe(fader); });
+
+</script>
+
+</body>
+</html>
+
