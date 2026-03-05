@@ -498,19 +498,29 @@ body { font-family: 'Inter', sans-serif; background: #f6f7f8; color:#111; paddin
 body.home { padding-top: 0; }
 .top-nav { position:fixed; top:0; left:0; width:100%; height:80px; background:#fff; display:flex; align-items:center; justify-content: space-between; padding:0 60px; z-index:1000; border-bottom:1px solid rgba(0,0,0,0.05); max-width: 1920px; margin: 0 auto; }
 .top-nav--transparent { background: transparent; border-bottom: 0; }
-.top-nav-center { display: flex; gap: 20px; align-items: center; justify-content: center; }
-.top-nav-center a { text-decoration: none; font-weight: 600; letter-spacing: 0.5px; }
+.top-nav-center { display: flex; gap: 30px; align-items: center; justify-content: center; }
+.top-nav-center a { text-decoration: none; font-weight: 600; letter-spacing: 0.5px; font-size: 18px; }
 .top-nav--transparent .top-nav-center a {
     color: #fff;
-    background: rgba(0,0,0,0.35);
-    padding: 8px 14px;
-    border-radius: 8px;
+    background: rgba(0,0,0,0.55);
+    padding: 12px 24px;
+    border-radius: 10px;
     transition: background 0.2s ease;
+    display: inline-block;;
+    font-size: 20px;
 }
 .top-nav--transparent .top-nav-center a:hover { background: rgba(0,0,0,0.6); }
-.top-nav--transparent .top-nav-center .brand { background: none; padding: 0; }
-.top-nav--transparent .top-nav-center .brand:hover { background: none; }
-.brand { font-weight:700; font-size:24px; color:#111; text-decoration:none; letter-spacing:2px; display: flex; align-items: center; }
+.top-nav--transparent .top-nav-center .brand {
+    color: #fff;
+    background: rgba(0,0,0,0.55);
+    padding: 3px 70px;
+    border-radius: 10px;
+    transition: background 0.2s ease;
+    display: inline-block;
+}
+.top-nav--transparent .top-nav-center .brand:hover {
+    background: rgba(0,0,0,0.6);
+}.brand { font-weight:700; font-size:24px; color:#fff; text-decoration:none; letter-spacing:2px; display: flex; align-items: center; }
 .nav-right { display: flex; gap: 20px; align-items: center; }
 .nav-right a { 
     text-decoration: none; 
