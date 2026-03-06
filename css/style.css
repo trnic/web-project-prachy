@@ -4,21 +4,22 @@ body {
     background: #fff;
     color: #333;
 }
-
 header {
-    background: transparent;
+    background: rgba(0,0,0,0.25); /* lehká průhledná barva */
+    backdrop-filter: blur(10px);  /* rozmazání pozadí pod tím */
+
     color: white;
     padding: 15px 30px;
     display: flex;
     justify-content: center;
     align-items: center;
+
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 10;
 }
-
 .main-nav ul {
     list-style: none;
     display: flex;
