@@ -8,15 +8,17 @@
 </head>
 <body class="home">
 
-<header class="top-nav top-nav--transparent">
+<header class="top-nav">
 
     <a href="index.html" class="brand">
         <img src="obrazky/Logo_Silence_2%20tintes.png" alt="SILENCE" style="height:110px;">
     </a>
 
-    <nav class="nav-links">
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav class="nav-right" id="site-nav" aria-label="Hlavní navigace">
+        <a href="index.html" class="is-active" aria-current="page">Úvod</a>
+        <a href="o-nas.html">O nás</a>
         <a href="produkty.html">Produkty</a>
-        <a href="o-nas.html">O nas</a>
         <a href="kontakty.html">Kontakty</a>
     </nav>
 
@@ -150,6 +152,8 @@
 <footer>
     <p>© 2026 Silence – Elektrická vozidla</p>
 </footer>
+
+<script src="js/script.js" defer></script>
 
 </body>
 </html>

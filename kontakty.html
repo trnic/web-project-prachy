@@ -4,365 +4,93 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kontakty | SILENCE</title>
-    
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-    <style>
-        /* ============================= */
-        /* DESIGN SYSTÉM */
-        /* ============================= */
-        :root {
-            --bg: #f8f9fa;
-            --surface: #ffffff;
-            --text-main: #111111;
-            --text-muted: #444444;
-            --accent: #00d084;
-            --shadow: 0 20px 40px rgba(0,0,0,0.04);
-            --radius: 24px;
-            --transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        body {
-            font-family: 'Inter', sans-serif;
-            background: var(--bg);
-            color: var(--text-main);
-            line-height: 1.8;
-            overflow-x: hidden;
-        }
-
-        /* ============================= */
-        /* NAVIGACE */
-        /* ============================= */
-        .top-nav {
-            position: fixed;
-            top: 0; width: 100%; height: 80px;
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(15px);
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 0 8%; z-index: 1000;
-            border-bottom: 1px solid rgba(0,0,0,0.05);
-            transition: var(--transition);
-        }
-
-        .top-nav.scrolled { height: 70px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
-
-        .brand { text-decoration: none; display: flex; align-items: center; }
-        .brand img { height: 50px; transition: var(--transition); }
-
-        .nav-right .prod-link {
-            color: var(--text-main);
-            text-decoration: none;
-            font-weight: 700;
-            padding: 12px 28px;
-            border-radius: 100px;
-            background: var(--text-main);
-            color: white;
-            transition: var(--transition);
-        }
-
-        .nav-right .prod-link:hover { transform: scale(1.05); background: var(--accent); }
-
-        /* ============================= */
-        /* HERO SEKCE */
-        /* ============================= */
-        .hero {
-            padding: 180px 8% 100px;
-            text-align: center;
-            background: radial-gradient(circle at top, #e9fcf5 0%, #f8f9fa 50%);
-            max-width: 1600px;
-            margin: 0 auto;
-        }
-
-        .hero h1 {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 800;
-            margin-bottom: 25px;
-            letter-spacing: -0.04em;
-        }
-
-        .hero p {
-            max-width: 800px;
-            margin: 0 auto;
-            font-size: 1.2rem;
-            color: var(--text-muted);
-        }
-
-        /* ============================= */
-        /* BENTO GRID & CONTENT */
-        /* ============================= */
-        section { 
-            padding: 80px 8%;
-            max-width: 1600px;
-            margin: 0 auto;
-        }
-
-        .bento-grid {
-            display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            gap: 30px;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .card {
-            background: var(--surface);
-            padding: 50px;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            border: 1px solid rgba(0,0,0,0.03);
-            transition: var(--transition);
-            min-width: 0; /* Zabrání přetečení obsahu */
-        }
-
-        .card:hover { transform: translateY(-10px); box-shadow: 0 30px 60px rgba(0,0,0,0.08); }
-
-        .card p {
-            word-wrap: break-word;
-            overflow-wrap: break-word;
-        }
-
-        h2 { 
-            font-size: 2.2rem; 
-            margin-bottom: 20px; 
-            font-weight: 700; 
-            letter-spacing: -0.02em;
-            word-wrap: break-word;
-        }
-        h3 { 
-            font-size: 1.4rem; 
-            margin-bottom: 15px;
-            word-wrap: break-word;
-        }
-
-        p {
-            word-wrap: break-word;
-            overflow-wrap: break-word;
-        }
-
-        /* ============================= */
-        /* CONTACT GRID */
-        /* ============================= */
-        .contact-container {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 25px;
-            margin-top: 50px;
-            max-width: 1400px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .contact-box {
-            background: var(--surface);
-            padding: 40px;
-            border-radius: var(--radius);
-            transition: var(--transition);
-            border: 1px solid transparent;
-            box-shadow: var(--shadow);
-            min-width: 0; /* Zabrání přetečení */
-            word-wrap: break-word;
-        }
-
-        .contact-box:hover { border-color: var(--accent); background: #f0fff9; }
-
-        .contact-box h3 {
-            font-size: 1.2rem;
-            margin-bottom: 15px;
-            color: var(--accent);
-            word-wrap: break-word;
-        }
-
-        .contact-box p {
-            color: var(--text-muted);
-            word-wrap: break-word;
-            overflow-wrap: break-word;
-        }
-
-        .contact-box a {
-            color: var(--text-main);
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        .contact-box a:hover {
-            color: var(--accent);
-        }
-
-        /* ============================= */
-        /* ANIMACE */
-        /* ============================= */
-        .reveal {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: all 0.8s ease-out;
-        }
-
-        .reveal.active { opacity: 1; transform: translateY(0); }
-
-        /* ============================= */
-        /* RESPONSIVE */
-        /* ============================= */
-        @media (max-width: 1200px) {
-            .contact-container {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @media (max-width: 1000px) {
-            .bento-grid { grid-template-columns: 1fr; }
-            section { padding: 60px 5%; }
-        }
-
-        @media (max-width: 768px) {
-            .contact-container {
-                grid-template-columns: 1fr;
-            }
-            
-            .hero {
-                padding: 140px 5% 80px;
-            }
-            
-            .card {
-                padding: 30px;
-            }
-            
-            .contact-box {
-                padding: 30px;
-            }
-        }
-
-        footer {
-            text-align: center;
-            padding: 80px 5%;
-            background: white;
-            border-top: 1px solid rgba(0,0,0,0.05);
-            max-width: 1600px;
-            margin: 0 auto;
-        }
-    </style>
+    <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
-
     <header class="top-nav">
         <a href="index.html" class="brand">
             <img src="obrazky/Logo_Silence_2 tintes.png" alt="SILENCE" style="height:110px;">
         </a>
-        <nav class="nav-right" aria-label="Produkty">
-            <a href="produkty.html" class="prod-link">Produkty</a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+        <nav class="nav-right" id="site-nav" aria-label="Hlavní navigace">
+            <a href="index.html">Úvod</a>
+            <a href="o-nas.html">O nás</a>
+            <a href="produkty.html">Produkty</a>
+            <a href="kontakty.html" class="is-active" aria-current="page">Kontakty</a>
         </nav>
     </header>
 
-    <main>
-        <section class="hero reveal">
+    <main class="page-main page-main--contacts">
+        <section class="hero fade-in">
             <h1>Kontakty</h1>
-            <p>
-                Máte dotazy ohledně našich produktů nebo služeb? 
-                Rádi Vám pomůžeme s výběrem správného řešení pro Vaše potřeby.
-            </p>
+            <p>První kontaktní bod pro ČR je Autoservis Růžička. Níže najdete hlavní české kontakty i sekundární kontakty na centrálu SILENCE ve Španělsku.</p>
         </section>
 
-        <section>
-            <div class="bento-grid">
-                <div class="card reveal">
-                    <h2>O společnosti Silence</h2>
-                    <p>
-                       Silence je přední španělský výrobce elektrických skútrů a městských vozidel.
-                       Vývoj i výroba probíhají v Barceloně, kde firma provozuje moderní technologické centrum a vlastní továrnu na baterie i finální montáž vozidel.
-                       Silence se dlouhodobě zaměřuje na udržitelnou městskou mobilitu, inovace a praktická řešení pro každodenní provoz.
-                    </p>
-                    <p style="margin-top: 20px;">
-                        Historie značky je úzce spojena s vývojem městské mobility v Evropě. 
-                        Značka Seat Mo, určená pro sdílené služby a městskou mikromobilitu, 
-                        využívá technologie a vozidla vyvinutá společností Silence jako základní 
-                        platform pro své služby.
-                    </p>
-                </div>
-
-                <div class="card reveal" style="background: #f1fcf8; border-color: #d1f7e8;">
-                    <h2>Španělský závod</h2>
-                    <p>
-                        Výrobní závod SILENCE se nachází v Barceloně a představuje 
-                        moderní automobilový komplex zaměřený na elektromobilitu.
-                    </p>
-                    <p style="margin-top: 20px;">
-                        Závod se specializuje na vývoj a výrobu elektrických skútrů 
-                        a lehkých městských vozidel s důrazem na udržitelnost, 
-                        inovativní bateriové systémy a kvalitu výroby.
-                    </p>
-                </div>
+        <section class="section-block fade-in">
+            <div class="section-header">
+                <h2>České kontakty (primární)</h2>
+                <p>Pro servis, poptávky i technickou podporu využijte tyto kontakty jako první.</p>
+            </div>
+            <div class="contact-grid contact-grid--primary">
+                <article class="contact-box">
+                    <h3>Telefon</h3>
+                    <p><a href="tel:+420603345109">+420 603 345 109</a></p>
+                </article>
+                <article class="contact-box">
+                    <h3>Email</h3>
+                    <p><a href="mailto:info@autoservis-ruzicka.cz">info@autoservis-ruzicka.cz</a></p>
+                </article>
+                <article class="contact-box">
+                    <h3>Adresa</h3>
+                    <p>Pražská 1055<br>280 02 Kolín<br>Česká republika</p>
+                </article>
+                <article class="contact-box">
+                    <h3>Servisní doba</h3>
+                    <p>Po-Pá: 8:00-17:00<br>So: dle domluvy<br>Ne: zavřeno</p>
+                </article>
             </div>
         </section>
 
-        <section class="reveal">
-            <h2 style="text-align:center; margin-bottom:40px;">Kontaktní informace – Silence.eco</h2>
-            <div class="contact-container">
-                <div class="contact-box">
-                    <h3>📍 Adresa</h3>
-                    <p>
-                        C/ Còrsega, 293<br>
-                        08008 Barcelona<br>
-                        Španělsko
-                    </p>
-                </div>
-                
-                <div class="contact-box">
-                    <h3>📞 Telefon</h3>
-                    <p>
-                        <a href="tel:+34 933 72 29 66">+34 933 72 29 66</a>
-                    </p>
-                </div>
-                
-                <div class="contact-box">
-                    <h3>✉️ Email</h3>
-                    <p>
-                        <a href="mailto:info@silence.eco">info@silence.eco</a>
-                    </p>
-                </div>
-                
-                <div class="contact-box">
-                    <h3>🕒 Otevírací doba</h3>
-                    <p>
-                        Po–Pá: 7:30–16:30<br>
-                        So: 7:30–12:00<br>
-                        Ne: Zavřeno
-                    </p>
-                </div>
-            </div>
+        <section class="section-block fade-in">
+            <article class="partner-highlight">
+                <h2>Autoservis Růžička</h2>
+                <p>České autorizované servisní a kontaktní místo pro značku SILENCE.</p>
+                <p><a class="inline-link" href="https://www.autoservis-ruzicka.cz" target="_blank" rel="noopener noreferrer">Přejít na web Autoservis Růžička</a></p>
+            </article>
         </section>
 
-        <section class="reveal">
-            <div class="bento-grid">
-                <div class="card" style="background: #1a1a1a; color: white;">
-                    <h2 style="color: white;">Autoservis Růžička</h2>
-                    <p style="color: rgba(255,255,255,0.8);">
-                        Autoservis Růžička je české servisní a kontaktní místo pro zákazníky značky SILENCE.
-                        Poskytujeme poradenství při výběru, pravidelný servis, diagnostiku i technickou podporu,
-                        aby byl provoz vašich elektrických vozidel spolehlivý a bez starostí.
-                    </p>
-                    <p style="color: rgba(255,255,255,0.8); margin-top: 20px;">
-                        <strong style="color: var(--accent);">Kontakt:</strong><br>
-                        Telefon: <a href="tel:+420 603 345 109" style="color: white;">+420 603 345 109</a><br>
-                        Email: <a href="mailto:info@autoservis-ruzicka.cz" style="color: white;">info@autoservis-ruzicka.cz</a><br>
-                        Adresa: Pražská 1055, 28002 Kolí, Česká republika
-                    </p>
-                </div>
-
-                <div class="card reveal">
-                    <h3>Servisní služby</h3>
-                    <p>
-                        ✓ Pravidelná údržba a servis<br>
-                        ✓ Diagnostika vozidel<br>
-                        ✓ Opravy a náhradní díly<br>
-                        ✓ Servis baterií<br>
-                        ✓ Technická podpora
-                    </p>
-                </div>
-            </div>
+        <section class="section-block fade-in">
+            <article class="text-panel">
+                <h2>Krátké info</h2>
+                <p>Autoservis Růžička zajišťuje poradenství, pravidelný servis, diagnostiku a technickou podporu. V případě složitějších požadavků koordinuje komunikaci přímo s výrobcem SILENCE.</p>
+            </article>
         </section>
 
+        <section class="section-block fade-in">
+            <div class="section-header">
+                <h2>Španělské kontakty (sekundární)</h2>
+                <p>Kontakty na centrálu SILENCE použijte zejména pro firemní a mezinárodní agendu.</p>
+            </div>
+            <div class="contact-grid">
+                <article class="contact-box">
+                    <h3>Adresa</h3>
+                    <p>C/ Corsega, 293<br>08008 Barcelona<br>Spanelsko</p>
+                </article>
+                <article class="contact-box">
+                    <h3>Telefon</h3>
+                    <p><a href="tel:+34933722966">+34 933 72 29 66</a></p>
+                </article>
+                <article class="contact-box">
+                    <h3>Email</h3>
+                    <p><a href="mailto:info@silence.eco">info@silence.eco</a></p>
+                </article>
+                <article class="contact-box">
+                    <h3>Web</h3>
+                    <p><a href="https://www.silence.eco" target="_blank" rel="noopener noreferrer">www.silence.eco</a></p>
+                </article>
+            </div>
+        </section>
     </main>
 
     <footer>
@@ -370,25 +98,6 @@
         <p style="margin-top: 20px; font-size: 0.9rem; color: #999;">&copy; 2026 SILENCE. Všechna práva vyhrazena.</p>
     </footer>
 
-    <script>
-        // Scroll Reveal
-        const observerOptions = { threshold: 0.1 };
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-        // Nav Scroll Effect
-        window.addEventListener('scroll', () => {
-            const nav = document.querySelector('.top-nav');
-            if (window.scrollY > 50) nav.classList.add('scrolled');
-            else nav.classList.remove('scrolled');
-        });
-    </script>
+    <script src="js/script.js" defer></script>
 </body>
 </html>
