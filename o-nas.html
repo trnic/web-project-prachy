@@ -1,101 +1,164 @@
 <!DOCTYPE html>
 <html lang="cs">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>O společnosti | SILENCE</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>O nás – Silence Elektrická vozidla</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/o-nas.css">
 </head>
 <body>
-    <header class="top-nav">
-        <a href="index.html" class="brand">
-            <img src="obrazky/Logo_Silence_2 tintes.png" alt="SILENCE" style="height:110px;">
+
+  <nav>
+    <a href="index.html" class="logo">SILENCE</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Úvod</a></li>
+      <li><a href="o-nas.html" class="active">O nás</a></li>
+      <li><a href="produkty.html">Produkty</a></li>
+      <li><a href="kontakty.html">Kontakty</a></li>
+    </ul>
+    <button class="nav-cta" type="button">Domluvit test →</button>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Úvod</a>
+    <a href="o-nas.html" class="active">O nás</a>
+    <a href="produkty.html">Produkty</a>
+    <a href="kontakty.html">Kontakty</a>
+  </div>
+
+  <div class="page-header">
+    <div class="page-header-left fade-in">
+      <p class="eyebrow">Španělská inovace od 2012</p>
+      <h1>Budoucnost<br>městské<br>mobility.</h1>
+      <p class="page-header-sub">SILENCE je barcelonská společnost specializující se na vývoj a výrobu 100% elektrických vozidel pro každodenní život ve městě.</p>
+    </div>
+    <div class="page-header-right">
+      <img src="obrazky/250308_A0_Vermicar.JPG" alt="Silence vozidlo v ulicích" id="pageHeaderImage">
+    </div>
+  </div>
+
+  <div class="intro-nums">
+    <div class="intro-num fade-in">
+      <div class="intro-num-val">2012</div>
+      <div class="intro-num-label">Rok založení</div>
+    </div>
+    <div class="intro-num fade-in delay-1">
+      <div class="intro-num-val">Barcelona</div>
+      <div class="intro-num-label">Sídlo a výroba</div>
+    </div>
+    <div class="intro-num fade-in delay-2">
+      <div class="intro-num-val">100 %</div>
+      <div class="intro-num-label">Elektrický pohon</div>
+    </div>
+    <div class="intro-num fade-in delay-3">
+      <div class="intro-num-val">Evropa</div>
+      <div class="intro-num-label">Trh působení</div>
+    </div>
+  </div>
+
+  <div class="story">
+    <div class="story-left fade-in">
+      <p class="block-label">Naše historie</p>
+      <h2>Od vize po realitu ulic</h2>
+      <p>Společnost SILENCE byla založena s jasnou vizí transformovat způsob, jakým se pohybujeme ve městech. Od svého vzniku se soustředí na inovace v oblasti elektrické mobility a vývoj vlastních bateriových systémů.</p>
+      <p>Díky silnému výzkumu a vývoji dokázala firma vytvořit řešení, která kombinují výkon, efektivitu a dlouhou životnost. SILENCE se rychle stala jedním z lídrů v oblasti elektrických skútrů a lehkých městských vozidel v Evropě.</p>
+    </div>
+    <div class="story-right fade-in delay-15">
+      <p class="block-label">Výroba a inovace</p>
+      <h2>Vlastní závod, vlastní technologie</h2>
+      <p>SILENCE vyrábí svá vozidla ve vlastních moderních závodech ve Španělsku. Klíčovým prvkem je vyjímatelná baterie s kolečky, která umožňuje snadné nabíjení doma nebo v kanceláři — bez nutnosti hledat nabíjecí stanici.</p>
+      <p>Firma klade důraz na kvalitu, bezpečnost a ekologii. Každý produkt je navržen tak, aby minimalizoval dopad na životní prostředí a zároveň přinášel maximální komfort řidiči.</p>
+    </div>
+  </div>
+
+  <div class="timeline">
+    <div class="timeline-title fade-in">Klíčové milníky</div>
+    <div class="timeline-items">
+      <div class="timeline-item">
+        <div class="timeline-year">2012</div>
+        <div class="timeline-event">Založení společnosti</div>
+        <div class="timeline-desc">Vznik SILENCE v Barceloně s vizí čisté městské mobility.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2018</div>
+        <div class="timeline-event">Uvedení S02</div>
+        <div class="timeline-desc">Elektrický skútr s Battery Swap technologií vstupuje na trh.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2020</div>
+        <div class="timeline-event">Silence S04</div>
+        <div class="timeline-desc">Nanocar pro každodenní dojíždění s chytrým interiérem.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2024</div>
+        <div class="timeline-event">Expanze do ČR</div>
+        <div class="timeline-desc">SILENCE přichází na český trh skrze lokálního partnera.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="values-section">
+    <div class="values-header fade-in">
+      <h2>Naše hodnoty</h2>
+    </div>
+    <div class="values-grid">
+      <div class="value-card fade-in">
+        <div class="value-num">01</div>
+        <h3>Udržitelnost</h3>
+        <p>Minimalizujeme emise a aktivně podporujeme čistší budoucnost měst pro příští generace.</p>
+      </div>
+      <div class="value-card fade-in delay-1">
+        <div class="value-num">02</div>
+        <h3>Inovace</h3>
+        <p>Vyvíjíme vlastní technologie baterií a inteligentních systémů — nekopírujeme, tvoříme.</p>
+      </div>
+      <div class="value-card fade-in delay-2">
+        <div class="value-num">03</div>
+        <h3>Kvalita</h3>
+        <p>Každý produkt splňuje přísné evropské standardy bezpečnosti a dlouhodobé spolehlivosti.</p>
+      </div>
+      <div class="value-card fade-in delay-3">
+        <div class="value-num">04</div>
+        <h3>Design</h3>
+        <p>Minimalistický a moderní vzhled inspirovaný budoucností — vozidlo jako součást životního stylu.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="partner">
+    <div class="partner-left fade-in">
+      <p class="block-label">Česká republika</p>
+      <h2>Lokální partner pro servis a podporu</h2>
+      <p>Pro lokální servis, poradenství a testovací jízdy spolupracujeme s Autoservis Růžička — vaším kontaktním místem pro SILENCE v ČR.</p>
+      <a href="kontakty.html" class="btn-primary">Kontaktovat nás →</a>
+    </div>
+    <div class="partner-right fade-in delay-15">
+      <p class="block-label">Užitečné odkazy</p>
+      <div class="partner-links">
+        <a href="https://www.autoservis-ruzicka.cz" target="_blank" class="partner-link">
+          Autoservis Růžička <span>Lokální partner →</span>
         </a>
-        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
-        <nav class="nav-right" id="site-nav" aria-label="Hlavní navigace">
-            <a href="index.html">Úvod</a>
-            <a href="o-nas.html" class="is-active" aria-current="page">O nás</a>
-            <a href="produkty.html">Produkty</a>
-            <a href="kontakty.html">Kontakty</a>
-        </nav>
-    </header>
+        <a href="produkty.html" class="partner-link">
+          Naše produkty <span>S02 &amp; S04 →</span>
+        </a>
+        <a href="kontakty.html" class="partner-link">
+          Domluvit test jízdu <span>Kontakty →</span>
+        </a>
+      </div>
+    </div>
+  </div>
 
-    <main class="page-main page-main--about">
-        <section class="hero fade-in">
-            <h1>Budoucnost městské mobility</h1>
-            <p>SILENCE je španělská společnost založená v Barceloně, která se specializuje na vývoj a výrobu 100% elektrických vozidel pro městskou mobilitu.</p>
-        </section>
+  <footer>
+    <span class="logo">SILENCE</span>
+    <p>© 2026 Silence – Elektrická vozidla</p>
+  </footer>
 
-        <section class="section-block fade-in">
-            <div class="section-header">
-                <h2>Přehled společnosti</h2>
-                <p>Současný obsah zůstává zachován, ale je rozdělen do přehlednějších bloků pro rychlejší orientaci.</p>
-            </div>
-            <div class="about-grid">
-                <article class="card">
-                    <h3>Naše historie</h3>
-                    <p>Společnost SILENCE byla založena s jasnou vizí transformovat způsob, jakým se pohybujeme ve městech. Od svého vzniku se soustředí na inovace v oblasti elektrické mobility a vývoj vlastních bateriových systémů.</p>
-                    <p>Díky silnému výzkumu a vývoji dokázala firma vytvořit řešení, která kombinují výkon, efektivitu a dlouhou životnost. SILENCE se rychle stala jedním z lídrů v oblasti elektrických skútrů a lehkých městských vozidel v Evropě.</p>
-                </article>
-                <article class="card card--accent">
-                    <h3>Výroba a inovace</h3>
-                    <p>SILENCE vyrábí svá vozidla ve vlastních moderních závodech ve Španělsku. Klíčovým prvkem je vyjímatelná baterie s kolečky, která umožňuje snadné nabíjení doma nebo v kanceláři.</p>
-                    <p>Firma klade důraz na kvalitu, bezpečnost a ekologii. Každý produkt je navržen tak, aby minimalizoval dopad na životní prostředí.</p>
-                </article>
-            </div>
-        </section>
+  <script src="js/o-nas.js" defer></script>
 
-        <section class="section-block fade-in">
-            <div class="section-header">
-                <h2>Místa pro doplnění obsahu</h2>
-                <p>Tyto bloky jsou připravené pro další rozšíření textů a dat.</p>
-            </div>
-            <div class="about-placeholder-grid">
-                <article class="placeholder-card">
-                    <h3>Historie (placeholder)</h3>
-                    <p>Doplňte časovou osu, klíčové milníky a vývoj značky SILENCE v jednotlivých letech.</p>
-                </article>
-                <article class="placeholder-card">
-                    <h3>Zajímavosti (placeholder)</h3>
-                    <p>Doplňte fakta o výrobě, počtu vozidel, technologiích Battery Swap a evropském působení.</p>
-                </article>
-                <article class="placeholder-card">
-                    <h3>Mise a hodnoty (placeholder)</h3>
-                    <p>Doplňte firemní misi, hodnoty týmu a konkrétní závazky k udržitelné mobilitě.</p>
-                </article>
-            </div>
-        </section>
-
-        <section class="section-block fade-in">
-            <div class="section-header">
-                <h2>Naše hodnoty</h2>
-            </div>
-            <div class="values-container">
-                <article class="value-box"><h3>Udržitelnost</h3><p>Minimalizujeme emise a podporujeme čistší budoucnost měst.</p></article>
-                <article class="value-box"><h3>Inovace</h3><p>Vyvíjíme vlastní technologie baterií a inteligentních systémů.</p></article>
-                <article class="value-box"><h3>Kvalita</h3><p>Každý produkt splňuje přísné evropské standardy.</p></article>
-                <article class="value-box"><h3>Design</h3><p>Minimalistický a moderní vzhled inspirovaný budoucností.</p></article>
-            </div>
-        </section>
-
-        <section class="section-block fade-in">
-            <article class="partner-links">
-                <h2>Propojení na partnera v ČR</h2>
-                <p>Pro lokální servis a podporu přecházejte mezi stránkami SILENCE a Autoservis Růžička.</p>
-                <div class="partner-actions">
-                    <a class="btn" href="https://www.autoservis-ruzicka.cz" target="_blank" rel="noopener noreferrer">Autoservis Růžička (placeholder link)</a>
-                    <a class="ghost-btn" href="kontakty.html">Kontakty SILENCE CZ</a>
-                </div>
-            </article>
-        </section>
-    </main>
-
-    <footer>
-        <img src="obrazky/SILENCE NEGRO.png" alt="silence" style="height:40px;">
-        <p style="margin-top: 20px; font-size: 0.9rem; color: #999;">&copy; 2026 SILENCE. Všechna práva vyhrazena.</p>
-    </footer>
-
-    <script src="js/script.js" defer></script>
 </body>
 </html>

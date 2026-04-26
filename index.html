@@ -1,159 +1,172 @@
 <!DOCTYPE html>
 <html lang="cs">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Silence – Elektrická vozidla</title>
-    <link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Silence – Elektrická vozidla</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/index.css">
 </head>
-<body class="home">
+<body>
 
-<header class="top-nav">
+  <nav>
+    <a href="index.html" class="logo">SILENCE</a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Úvod</a></li>
+      <li><a href="o-nas.html">O nás</a></li>
+      <li><a href="produkty.html">Produkty</a></li>
+      <li><a href="kontakty.html">Kontakty</a></li>
+    </ul>
+    <button class="nav-cta" type="button">Domluvit test →</button>
+  </nav>
 
-    <a href="index.html" class="brand">
-        <img src="obrazky/Logo_Silence_2%20tintes.png" alt="SILENCE" style="height:110px;">
-    </a>
+  <section class="hero">
+    <div class="hero-left">
+      <p class="eyebrow">Elektrická mobilita z Barcelony</p>
+      <h1>Ticho,<br>které<br>pohání<br>město.</h1>
+      <p class="hero-sub">Silence spojuje čistý provoz, chytré technologie a elegantní design pro každodenní městské dojíždění. Připraveni na budoucnost bez kompromisů?</p>
+      <div class="hero-btns">
+        <a href="produkty.html" class="btn-primary">Zobrazit nabídku</a>
+        <a href="kontakty.html" class="btn-ghost">Domluvit test jízdu</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <img src="obrazky/20250701_181807.jpg" alt="Silence vozidlo">
+    </div>
+  </section>
 
-    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
-    <nav class="nav-right" id="site-nav" aria-label="Hlavní navigace">
-        <a href="index.html" class="is-active" aria-current="page">Úvod</a>
-        <a href="o-nas.html">O nás</a>
-        <a href="produkty.html">Produkty</a>
-        <a href="kontakty.html">Kontakty</a>
-    </nav>
+  <div class="stats-bar">
+    <div class="stat">
+      <div class="stat-num">75–149 km</div>
+      <div class="stat-label">Reálný dojezd</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">0 %</div>
+      <div class="stat-label">Lokální emise</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">od 3 490 €</div>
+      <div class="stat-label">Vstupní cena</div>
+    </div>
+  </div>
 
-</header>
+  <div class="features">
+    <div class="feature">
+      <div class="feature-icon">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+          <circle cx="9" cy="9" r="7" stroke="#888780" stroke-width="1.3"/>
+          <path d="M9 5.5v3.5l2.5 1.5" stroke="#888780" stroke-width="1.3" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <h3>Efektivní provoz</h3>
+      <p>Chytré bateriové systémy a nízké náklady na údržbu pro každodenní provoz.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+          <rect x="2" y="6" width="14" height="8" rx="2" stroke="#888780" stroke-width="1.3"/>
+          <path d="M6 6V5a3 3 0 016 0v1" stroke="#888780" stroke-width="1.3" stroke-linecap="round"/>
+          <circle cx="9" cy="10" r="1.5" fill="#888780"/>
+        </svg>
+      </div>
+      <h3>Snadné nabíjení</h3>
+      <p>Vyjímatelná baterie s kolečky — nabíjejte doma nebo v kanceláři bez starostí.</p>
+    </div>
+    <div class="feature">
+      <div class="feature-icon">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+          <path d="M9 3C6.2 3 4 5.2 4 8c0 3.7 5 10 5 10s5-6.3 5-10c0-2.8-2.2-5-5-5z" stroke="#888780" stroke-width="1.3"/>
+          <circle cx="9" cy="8" r="2" stroke="#888780" stroke-width="1.3"/>
+        </svg>
+      </div>
+      <h3>Městský rytmus</h3>
+      <p>Ideální pro doručování, sdílenou mobilitu i každodenní dojíždění po městě.</p>
+    </div>
+  </div>
 
-<section class="home-hero">
-    <div class="home-hero-inner">
-        <div class="home-hero-content">
-            <p class="home-eyebrow">Elektrická mobilita z Barcelony</p>
-            <h1>Ticho, které pohání město.</h1>
-            <p class="home-lead">
-                Silence spojuje čistý provoz, chytré technologie a elegantní design pro každodenní
-                městské dojíždění. Připraveni na budoucnost bez kompromisů?
-            </p>
-            <div class="home-hero-actions">
-                <a href="produkty.html" class="btn">Zobrazit nabídku</a>
-                <a href="kontakty.html" class="ghost-btn">Domluvit test</a>
-            </div>
-            <div class="home-stats">
-                <div class="home-stat">
-                    <span>75–149 km</span>
-                    <small>reálný dojezd</small>
-                </div>
-                <div class="home-stat">
-                    <span>tichý provoz</span>
-                    <small>městská mobilita</small>
-                </div>
-                <div class="home-stat">
-                    <span>0 % emisí</span>
-                    <small>lokální zplodiny</small>
-                </div>
-            </div>
+  <section class="products">
+    <div class="section-header">
+      <span class="section-title">Vybrané modely</span>
+      <a href="produkty.html" class="section-link">Všechny produkty →</a>
+    </div>
+    <div class="product-grid">
+      <a href="s02-cargo.html" class="product-card">
+        <div class="product-img">
+          <img src="obrazky/SO2_Cargo.png" alt="Silence S02 Cargo">
         </div>
-        <div class="home-collage" aria-hidden="true">
-            <img src="obrazky/20250701_181807.jpg" alt="" class="tall">
-            <img src="obrazky/20250701_181809.jpg" alt="">
-            <img src="obrazky/20250701_175522.jpg" alt="">
-            <img src="obrazky/20250701_182001.jpg" alt="" class="wide">
+        <div class="product-info">
+          <p class="product-tag">Elektrický skútr</p>
+          <p class="product-name">Silence S02 Cargo</p>
+          <p class="product-price">od 3 490 EUR &middot; 2024</p>
         </div>
-    </div>
-</section>
-
-<section class="home-strip">
-    <div class="home-strip-inner">
-        <div class="home-strip-card">
-            <img src="obrazky/ChatGPT Image 5. 3. 2026 20_50_39.png" alt="Detail elektromobility">
-            <div>
-                <h3>Efektivní provoz</h3>
-                <p>Chytré bateriové systémy a nízké náklady na údržbu.</p>
-            </div>
+      </a>
+      <a href="s04-cargo.html" class="product-card">
+        <div class="product-img">
+          <img src="obrazky/s04_white.3b76691c.webp" alt="Silence S04">
         </div>
-        <div class="home-strip-card">
-            <img src="obrazky/ChatGPT Image 5. 3. 2026 20_55_41.png" alt="Nabíjení a baterie">
-            <div>
-                <h3>Snadné nabíjení</h3>
-                <p>Vyjímatelná baterie s kolečky a flexibilní dobíjení.</p>
-            </div>
+        <div class="product-info">
+          <p class="product-tag">Elektrický nanocar</p>
+          <p class="product-name">Silence S04</p>
+          <p class="product-price">od 7 400 EUR &middot; 2020</p>
         </div>
-        <div class="home-strip-card">
-            <img src="obrazky/ChatGPT Image 5. 3. 2026 20_56_25.png" alt="Městská mobilita">
-            <div>
-                <h3>Městský rytmus</h3>
-                <p>Ideální pro doručování, sdílení i každodenní dojíždění.</p>
-            </div>
+      </a>
+    </div>
+  </section>
+
+  <section class="about">
+    <div class="about-left">
+      <h2>Inovace z Barcelony</h2>
+      <p>Výroba a vývoj probíhá v moderním španělském závodě. Každý detail je navržen pro maximální komfort a dlouhou životnost v městském prostředí.</p>
+      <p>Od prototypu po finální montáž — vše se zaměřením na udržitelnost a chytré technologie, které dávají smysl v reálném provozu.</p>
+      <a href="o-nas.html" class="btn-ghost">Zjistit více o značce</a>
+    </div>
+    <div class="about-right">
+      <div class="values">
+        <div class="value">
+          <div class="value-dot"></div>
+          <div>
+            <strong>Udržitelnost</strong>
+            <span>Minimalizujeme emise a podporujeme čistší budoucnost měst.</span>
+          </div>
         </div>
+        <div class="value">
+          <div class="value-dot"></div>
+          <div>
+            <strong>Inovace</strong>
+            <span>Vlastní technologie baterií a inteligentních systémů řízení.</span>
+          </div>
+        </div>
+        <div class="value">
+          <div class="value-dot"></div>
+          <div>
+            <strong>Kvalita</strong>
+            <span>Každý produkt splňuje přísné evropské standardy bezpečnosti.</span>
+          </div>
+        </div>
+        <div class="value">
+          <div class="value-dot"></div>
+          <div>
+            <strong>Design</strong>
+            <span>Minimalistický moderní vzhled inspirovaný budoucností mobility.</span>
+          </div>
+        </div>
+      </div>
     </div>
-</section>
+  </section>
 
-<section class="home-split">
-    <div class="home-split-media">
-        <img src="obrazky/20250701_181953.jpg" alt="Výroba a inovace">
-    </div>
-    <div class="home-split-text">
-        <h2>Inovace, které mají původ v Barceloně</h2>
-        <p>
-            Výroba a vývoj probíhá v moderním španělském závodě. Každý detail je navržen
-            pro maximální komfort a dlouhou životnost v městském prostředí.
-        </p>
-        <p>
-            Od prototypu po finální montáž — vše se zaměřením na udržitelnost a chytré
-            technologie, které dávají smysl v reálném provozu.
-        </p>
-        <a href="o-nas.html" class="ghost-btn">Zjistit více o značce</a>
-    </div>
-</section>
+  <section class="cta-section">
+    <h2>Připraveni na tichou revoluci?</h2>
+    <p>Ozvěte se nám a domluvte si prezentaci nebo testovací jízdu.</p>
+    <a href="kontakty.html" class="btn-primary">Kontaktovat nás →</a>
+  </section>
 
-<section class="home-products">
-    <div class="home-products-header">
-        <h2>Vybrané modely</h2>
-        <p>Elektrická vozidla připravená na město, firmy i sdílenou mobilitu.</p>
-    </div>
-    <div class="home-products-grid">
-        <article class="home-product-card">
-            <img src="obrazky/SO2_Cargo.png" alt="Silence S02 Cargo">
-            <div>
-                <h3>Silence S02 Cargo</h3>
-                <p>Doručování bez emisí a s maximální obratností v centru města.</p>
-                <a href="produkty.html" class="btn">Detail modelu</a>
-            </div>
-        </article>
-        <article class="home-product-card">
-            <img src="obrazky/s04_white.3b76691c.webp" alt="Silence S04">
-            <div>
-                <h3>Silence S04</h3>
-                <p>Nanocar pro každodenní dojíždění s chytrým interiérem.</p>
-                <a href="produkty.html" class="btn">Detail modelu</a>
-            </div>
-        </article>
-    </div>
-</section>
-
-<section class="home-gallery">
-    <div class="home-gallery-inner">
-        <img src="obrazky/250308_A0_Vermicar.JPG" alt="Silence detail" class="grid-large">
-        <img src="obrazky/250308_02a_York.JPG" alt="Silence exteriér">
-        <img src="obrazky/250308_02b_York.jpg" alt="Silence detail baterie">
-        <img src="obrazky/20250701_181801(0).jpg" alt="Silence v ulicích">
-        <img src="obrazky/20250701_175820.jpg" alt="Silence detail světla">
-    </div>
-</section>
-
-<section class="home-cta">
-    <div class="home-cta-inner">
-        <img src="obrazky/SILENCE BLANCO.png" alt="Silence" class="home-cta-logo">
-        <h2>Připraveni na tichou revoluci?</h2>
-        <p>Ozvěte se nám a domluvte si prezentaci nebo testovací jízdu.</p>
-        <a href="kontakty.html" class="btn">Kontaktovat</a>
-    </div>
-</section>
-
-<footer>
+  <footer>
+    <span class="logo">SILENCE</span>
     <p>© 2026 Silence – Elektrická vozidla</p>
-</footer>
+  </footer>
 
-<script src="js/script.js" defer></script>
+  <script src="js/index.js" defer></script>
 
 </body>
 </html>
