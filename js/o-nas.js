@@ -6,15 +6,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  const headerImage = document.getElementById('pageHeaderImage');
-  if (headerImage) {
-    headerImage.addEventListener('error', () => {
-      if (headerImage.parentNode && headerImage.parentNode.style) {
-        headerImage.parentNode.style.background = 'var(--bg-tertiary)';
-      }
-    });
-  }
-
   const hamburger = document.getElementById('hamburger');
   const mobileMenu = document.getElementById('mobileMenu');
 
@@ -33,7 +24,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   const fadeEls = document.querySelectorAll('.fade-in');
-
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
@@ -41,24 +31,9 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.15 });
+  }, { threshold: 0.12 });
 
   fadeEls.forEach((el) => observer.observe(el));
-
-  const timelineItems = document.querySelectorAll('.timeline-item');
-
-  const timelineObserver = new IntersectionObserver((entries) => {
-    if (entries[0].isIntersecting) {
-      timelineItems.forEach((item, index) => {
-        setTimeout(() => item.classList.add('visible'), index * 120);
-      });
-      timelineObserver.disconnect();
-    }
-  }, { threshold: 0.2 });
-
-  if (timelineItems.length) {
-    timelineObserver.observe(timelineItems[0]);
-  }
 
   setTimeout(() => {
     fadeEls.forEach((el) => {
@@ -67,4 +42,59 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }, 100);
+
+  const dayMap = { 0: 'ne', 1: 'po', 2: 'ut', 3: 'st', 4: 'ct', 5: 'pa', 6: 'so' };
+  const today = dayMap[new Date().getDay()];
+  const todayRow = document.getElementById(`row-${today}`);
+  if (todayRow) {
+    todayRow.classList.add('hours-today');
+  }
+
+  const handleSubmit = () => {
+    const jmeno = document.getElementById('jmeno')?.value.trim() || '';
+    const email = document.getElementById('email')?.value.trim() || '';
+    const zprava = document.getElementById('zprava')?.value.trim() || '';
+
+    if (!jmeno || !email || !zprava) {
+      alert('Prosím vyplňte alespoň jméno, email a zprávu.');
+      return;
+    }
+
+    const btn = document.getElementById('submitBtn');
+    if (!btn) {
+      return;
+    }
+
+    btn.textContent = 'Odesílám...';
+    btn.style.opacity = '0.6';
+    btn.disabled = true;
+
+    setTimeout(() => {
+      const formSuccess = document.getElementById('formSuccess');
+      if (formSuccess) {
+        formSuccess.classList.add('show');
+      }
+
+      btn.style.display = 'none';
+      ['jmeno', 'email', 'telefon', 'tema', 'zprava'].forEach((id) => {
+        const el = document.getElementById(id);
+        if (el) {
+          el.value = '';
+        }
+      });
+    }, 1000);
+  };
+
+  const submitBtn = document.getElementById('submitBtn');
+  if (submitBtn) {
+    submitBtn.addEventListener('click', handleSubmit);
+  }
+
+  document.querySelectorAll('.form-group input').forEach((input) => {
+    input.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        handleSubmit();
+      }
+    });
+  });
 });
