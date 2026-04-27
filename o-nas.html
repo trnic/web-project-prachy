@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kontakty – Silence Elektrická vozidla</title>
+  <title>O nás – Silence Elektrická vozidla</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/o-nas.css">
@@ -14,9 +14,9 @@
     <a href="index.html" class="logo">SILENCE</a>
     <ul class="nav-links">
       <li><a href="index.html">Úvod</a></li>
-      <li><a href="o-nas.html">O nás</a></li>
+      <li><a href="o-nas.html" class="active">O nás</a></li>
       <li><a href="produkty.html">Produkty</a></li>
-      <li><a href="kontakty.html" class="active">Kontakty</a></li>
+      <li><a href="kontakty.html">Kontakty</a></li>
     </ul>
     <button class="nav-cta" type="button">Domluvit test →</button>
     <button class="hamburger" id="hamburger" aria-label="Menu">
@@ -26,211 +26,129 @@
 
   <div class="mobile-menu" id="mobileMenu">
     <a href="index.html">Úvod</a>
-    <a href="o-nas.html">O nás</a>
+    <a href="o-nas.html" class="active">O nás</a>
     <a href="produkty.html">Produkty</a>
-    <a href="kontakty.html" class="active">Kontakty</a>
+    <a href="kontakty.html">Kontakty</a>
   </div>
 
-  <!-- PAGE HEADER -->
   <div class="page-header">
     <div class="page-header-left fade-in">
-      <p class="eyebrow">Jsme tu pro vás</p>
-      <h1>Pojďme<br>si to<br>říct.</h1>
-      <p class="page-header-sub">Máte otázku, zájem o testovací jízdu, nebo chcete vědět víc? Ozvěte se nám — rádi pomůžeme.</p>
+      <p class="eyebrow">Španělská inovace od 2012</p>
+      <h1>Budoucnost<br>městské<br>mobility.</h1>
+      <p class="page-header-sub">SILENCE je barcelonská společnost specializující se na vývoj a výrobu 100% elektrických vozidel pro každodenní život ve městě.</p>
     </div>
-    <div class="page-header-right fade-in delay-15">
-      <div class="page-header-right-inner">
-        <a href="tel:+420603345109" class="quick-link">
-          <div class="quick-link-icon">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-              <path d="M2.5 3.5A1.5 1.5 0 014 2h1.1a1.5 1.5 0 011.42 1.01l.54 1.61a1.5 1.5 0 01-.35 1.55L5.9 7a7.2 7.2 0 003.1 3.1l.83-.76a1.5 1.5 0 011.55-.35l1.61.54A1.5 1.5 0 0114 11v1.5A1.5 1.5 0 0112.5 14C6.7 14 2 9.3 2 3.5z" stroke="#888780" stroke-width="1.2" stroke-linejoin="round"/>
-            </svg>
-          </div>
-          <div class="quick-link-text">
-            <strong>+420 603 345 109</strong>
-            <span>Zavolat přímo</span>
-          </div>
-        </a>
-        <a href="mailto:info@autoservis-ruzicka.cz" class="quick-link">
-          <div class="quick-link-icon">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-              <rect x="1.5" y="3.5" width="13" height="9" rx="1.5" stroke="#888780" stroke-width="1.2"/>
-              <path d="M1.5 6l6.5 4 6.5-4" stroke="#888780" stroke-width="1.2" stroke-linecap="round"/>
-            </svg>
-          </div>
-          <div class="quick-link-text">
-            <strong>Napsat email</strong>
-            <span>info@autoservis-ruzicka.cz</span>
-          </div>
-        </a>
-        <a href="https://maps.google.com/?q=Pražská+1055,+280+02+Kolín" target="_blank" class="quick-link">
-          <div class="quick-link-icon">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-              <path d="M8 2C5.8 2 4 3.8 4 6c0 3.3 4 9 4 9s4-5.7 4-9c0-2.2-1.8-4-4-4z" stroke="#888780" stroke-width="1.2"/>
-              <circle cx="8" cy="6" r="1.5" stroke="#888780" stroke-width="1.2"/>
-            </svg>
-          </div>
-          <div class="quick-link-text">
-            <strong>Pražská 1055, Kolín</strong>
-            <span>Zobrazit na mapě</span>
-          </div>
-        </a>
+    <div class="page-header-right">
+      <img src="obrazky/250308_A0_Vermicar.JPG" alt="Silence vozidlo v ulicích" id="heroImage">
+    </div>
+  </div>
+
+  <div class="intro-nums">
+    <div class="intro-num fade-in">
+      <div class="intro-num-val">2012</div>
+      <div class="intro-num-label">Rok založení</div>
+    </div>
+    <div class="intro-num fade-in delay-10">
+      <div class="intro-num-val">Barcelona</div>
+      <div class="intro-num-label">Sídlo a výroba</div>
+    </div>
+    <div class="intro-num fade-in delay-20">
+      <div class="intro-num-val">100 %</div>
+      <div class="intro-num-label">Elektrický pohon</div>
+    </div>
+    <div class="intro-num fade-in delay-30">
+      <div class="intro-num-val">Evropa</div>
+      <div class="intro-num-label">Trh působení</div>
+    </div>
+  </div>
+
+  <div class="story">
+    <div class="story-left fade-in">
+      <p class="block-label">Naše historie</p>
+      <h2>Od vize po realitu ulic</h2>
+      <p>Společnost SILENCE byla založena s jasnou vizí transformovat způsob, jakým se pohybujeme ve městech. Od svého vzniku se soustředí na inovace v oblasti elektrické mobility a vývoj vlastních bateriových systémů.</p>
+      <p>Díky silnému výzkumu a vývoji dokázala firma vytvořit řešení, která kombinují výkon, efektivitu a dlouhou životnost. SILENCE se rychle stala jedním z lídrů v oblasti elektrických skútrů a lehkých městských vozidel v Evropě.</p>
+    </div>
+    <div class="story-right fade-in delay-15">
+      <p class="block-label">Výroba a inovace</p>
+      <h2>Vlastní závod, vlastní technologie</h2>
+      <p>SILENCE vyrábí svá vozidla ve vlastních moderních závodech ve Španělsku. Klíčovým prvkem je vyjímatelná baterie s kolečky, která umožňuje snadné nabíjení doma nebo v kanceláři — bez nutnosti hledat nabíjecí stanici.</p>
+      <p>Firma klade důraz na kvalitu, bezpečnost a ekologii. Každý produkt je navržen tak, aby minimalizoval dopad na životní prostředí a zároveň přinášel maximální komfort řidiči.</p>
+    </div>
+  </div>
+
+  <div class="timeline">
+    <div class="timeline-title fade-in">Klíčové milníky</div>
+    <div class="timeline-items">
+      <div class="timeline-item">
+        <div class="timeline-year">2012</div>
+        <div class="timeline-event">Založení společnosti</div>
+        <div class="timeline-desc">Vznik SILENCE v Barceloně s vizí čisté městské mobility.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2018</div>
+        <div class="timeline-event">Uvedení S02</div>
+        <div class="timeline-desc">Elektrický skútr s Battery Swap technologií vstupuje na trh.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2020</div>
+        <div class="timeline-event">Silence S04</div>
+        <div class="timeline-desc">Nanocar pro každodenní dojíždění s chytrým interiérem.</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-year">2024</div>
+        <div class="timeline-event">Expanze do ČR</div>
+        <div class="timeline-desc">SILENCE přichází na český trh skrze lokálního partnera.</div>
       </div>
     </div>
   </div>
 
-  <!-- CONTACT CARDS -->
-  <div class="contact-cards">
-    <div class="contact-card fade-in">
-      <div class="contact-icon">
-        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-          <path d="M3 4.5A1.5 1.5 0 014.5 3h1.38a1.5 1.5 0 011.42 1.01l.67 2.01a1.5 1.5 0 01-.34 1.55L6.75 8.96a9.04 9.04 0 004.29 4.29l1.38-.87a1.5 1.5 0 011.55-.35l2.01.67A1.5 1.5 0 0117 14.12V15.5A1.5 1.5 0 0115.5 17C8.6 17 3 11.4 3 4.5z" stroke="#888780" stroke-width="1.3" stroke-linejoin="round"/>
-        </svg>
-      </div>
-      <h3>Telefon</h3>
-      <a href="tel:+420603345109">+420 603 345 109</a>
-      <p class="note">Po–Pá: 8:00–17:00</p>
+  <div class="values-section">
+    <div class="values-header fade-in">
+      <h2>Naše hodnoty</h2>
     </div>
-    <div class="contact-card fade-in delay-10">
-      <div class="contact-icon">
-        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-          <rect x="2" y="4" width="14" height="10" rx="2" stroke="#888780" stroke-width="1.3"/>
-          <path d="M2 7l7 4.5L16 7" stroke="#888780" stroke-width="1.3" stroke-linecap="round"/>
-        </svg>
+    <div class="values-grid">
+      <div class="value-card fade-in">
+        <div class="value-num">01</div>
+        <h3>Udržitelnost</h3>
+        <p>Minimalizujeme emise a aktivně podporujeme čistší budoucnost měst pro příští generace.</p>
       </div>
-      <h3>Email</h3>
-      <a href="mailto:info@autoservis-ruzicka.cz">info@autoservis-ruzicka.cz</a>
-      <p class="note">Odpovídáme do 24 hodin</p>
-    </div>
-    <div class="contact-card fade-in delay-20">
-      <div class="contact-icon">
-        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-          <path d="M9 2C6.2 2 4 4.2 4 7c0 4.2 5 11 5 11s5-6.8 5-11c0-2.8-2.2-5-5-5z" stroke="#888780" stroke-width="1.3"/>
-          <circle cx="9" cy="7" r="2" stroke="#888780" stroke-width="1.3"/>
-        </svg>
+      <div class="value-card fade-in delay-10">
+        <div class="value-num">02</div>
+        <h3>Inovace</h3>
+        <p>Vyvíjíme vlastní technologie baterií a inteligentních systémů — nekopírujeme, tvoříme.</p>
       </div>
-      <h3>Adresa</h3>
-      <a href="https://maps.google.com/?q=Pražská+1055,+280+02+Kolín" target="_blank">Pražská 1055, Kolín</a>
-      <p class="note">280 02 Kolín, Česká republika</p>
+      <div class="value-card fade-in delay-20">
+        <div class="value-num">03</div>
+        <h3>Kvalita</h3>
+        <p>Každý produkt splňuje přísné evropské standardy bezpečnosti a dlouhodobé spolehlivosti.</p>
+      </div>
+      <div class="value-card fade-in delay-30">
+        <div class="value-num">04</div>
+        <h3>Design</h3>
+        <p>Minimalistický a moderní vzhled inspirovaný budoucností — vozidlo jako součást životního stylu.</p>
+      </div>
     </div>
   </div>
 
-  <!-- HOURS + SERVICES -->
-  <div class="main-grid">
-    <div class="main-left fade-in">
-      <p class="block-label">Autoservis Růžička</p>
-      <h2>Otevírací doba</h2>
-      <div class="hours-table">
-        <div class="hours-row" id="row-po"><span class="hours-day">Pondělí</span><span class="hours-time">8:00–17:00</span></div>
-        <div class="hours-row" id="row-ut"><span class="hours-day">Úterý</span><span class="hours-time">8:00–17:00</span></div>
-        <div class="hours-row" id="row-st"><span class="hours-day">Středa</span><span class="hours-time">8:00–17:00</span></div>
-        <div class="hours-row" id="row-ct"><span class="hours-day">Čtvrtek</span><span class="hours-time">8:00–17:00</span></div>
-        <div class="hours-row" id="row-pa"><span class="hours-day">Pátek</span><span class="hours-time">8:00–17:00</span></div>
-        <div class="hours-row" id="row-so"><span class="hours-day">Sobota</span><span class="hours-time">na domluvě</span></div>
-        <div class="hours-row" id="row-ne"><span class="hours-day">Neděle</span><span class="hours-time closed">zavřeno</span></div>
-      </div>
-      <a href="https://www.autoservis-ruzicka.cz" class="btn-ghost" target="_blank">Autoservis Růžička →</a>
-    </div>
-    <div class="main-right fade-in delay-15">
-      <p class="block-label">Co u nás najdete</p>
-      <h2>Naše služby</h2>
-      <div class="services-list">
-        <div class="service-item"><span class="service-dot"></span>Poradenství a předvedení vozidel</div>
-        <div class="service-item"><span class="service-dot"></span>Testovací jízdy zdarma</div>
-        <div class="service-item"><span class="service-dot"></span>Pravidelný servis a diagnostika</div>
-        <div class="service-item"><span class="service-dot"></span>Záruční a pozáruční péče</div>
-        <div class="service-item"><span class="service-dot"></span>Náhradní díly a příslušenství</div>
-        <div class="service-item"><span class="service-dot"></span>Pomoc s financováním a leasingem</div>
-      </div>
-      <a href="mailto:info@autoservis-ruzicka.cz" class="btn-primary">Napsat zprávu →</a>
-    </div>
-  </div>
-
-  <!-- CONTACT FORM -->
-  <div class="form-section fade-in">
-    <h2>Napište nám</h2>
-    <p>Vyplňte formulář a ozveme se vám co nejdříve.</p>
-    <div class="form-grid">
-      <div class="form-group">
-        <label for="jmeno">Jméno a příjmení</label>
-        <input type="text" id="jmeno" placeholder="Jan Novák">
-      </div>
-      <div class="form-group">
-        <label for="email">Email</label>
-        <input type="email" id="email" placeholder="jan@example.cz">
-      </div>
-      <div class="form-group">
-        <label for="telefon">Telefon</label>
-        <input type="tel" id="telefon" placeholder="+420 123 456 789">
-      </div>
-      <div class="form-group">
-        <label for="tema">Téma</label>
-        <select id="tema">
-          <option value="">Vyberte téma...</option>
-          <option value="test">Testovací jízda</option>
-          <option value="nabidka">Cenová nabídka</option>
-          <option value="servis">Servis a opravy</option>
-          <option value="info">Obecné dotazy</option>
-        </select>
-      </div>
-      <div class="form-group full">
-        <label for="zprava">Zpráva</label>
-        <textarea id="zprava" placeholder="Napište nám, s čím vám můžeme pomoci..."></textarea>
-      </div>
-    </div>
-    <div class="form-footer">
-      <p class="form-note">Odesláním souhlasíte se zpracováním osobních údajů.</p>
-      <button class="btn-primary" id="submitBtn" type="button">Odeslat zprávu →</button>
-    </div>
-    <div class="form-success" id="formSuccess">
-      ✓ Zpráva odeslána! Ozveme se vám do 24 hodin.
-    </div>
-  </div>
-
-  <!-- SPAIN + MAP -->
-  <div class="spain-section">
-    <div class="spain-left fade-in">
+  <div class="partner">
+    <div class="partner-left fade-in">
       <p class="block-label">Česká republika</p>
-      <h2>Autoservis Růžička</h2>
-      <div class="info-rows">
-        <div class="info-row">
-          <span class="info-key">Adresa</span>
-          <span class="info-val">Pražská 1055, 280 02 Kolín</span>
-        </div>
-        <div class="info-row">
-          <span class="info-key">Telefon</span>
-          <span class="info-val"><a href="tel:+420603345109">+420 603 345 109</a></span>
-        </div>
-        <div class="info-row">
-          <span class="info-key">Email</span>
-          <span class="info-val"><a href="mailto:info@autoservis-ruzicka.cz">info@autoservis-ruzicka.cz</a></span>
-        </div>
-        <div class="info-row">
-          <span class="info-key">Web</span>
-          <span class="info-val"><a href="https://www.autoservis-ruzicka.cz" target="_blank">autoservis-ruzicka.cz</a></span>
-        </div>
-      </div>
+      <h2>Lokální partner pro servis a podporu</h2>
+      <p>Pro lokální servis, poradenství a testovací jízdy spolupracujeme s Autoservis Růžička — vaším kontaktním místem pro SILENCE v ČR.</p>
+      <a href="kontakty.html" class="btn-primary">Kontaktovat nás →</a>
     </div>
-    <div class="spain-right fade-in delay-15">
-      <p class="block-label">Španělsko</p>
-      <h2>Centrála SILENCE</h2>
-      <div class="info-rows">
-        <div class="info-row">
-          <span class="info-key">Adresa</span>
-          <span class="info-val">C/ Corsega 293, Barcelona</span>
-        </div>
-        <div class="info-row">
-          <span class="info-key">Telefon</span>
-          <span class="info-val"><a href="tel:+34933722966">+34 933 72 29 66</a></span>
-        </div>
-        <div class="info-row">
-          <span class="info-key">Email</span>
-          <span class="info-val"><a href="mailto:info@silence.eco">info@silence.eco</a></span>
-        </div>
-        <div class="info-row">
-          <span class="info-key">Web</span>
-          <span class="info-val"><a href="https://www.silence.eco" target="_blank">silence.eco</a></span>
-        </div>
+    <div class="partner-right fade-in delay-15">
+      <p class="block-label">Užitečné odkazy</p>
+      <div class="partner-links">
+        <a href="https://www.autoservis-ruzicka.cz" target="_blank" class="partner-link">
+          Autoservis Růžička <span>Lokální partner →</span>
+        </a>
+        <a href="produkty.html" class="partner-link">
+          Naše produkty <span>S02 &amp; S04 →</span>
+        </a>
+        <a href="kontakty.html" class="partner-link">
+          Domluvit test jízdu <span>Kontakty →</span>
+        </a>
       </div>
     </div>
   </div>
@@ -244,4 +162,3 @@
 
 </body>
 </html>
-

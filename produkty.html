@@ -1,63 +1,233 @@
 <!DOCTYPE html>
 <html lang="cs">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Silence S04 & S02 - Produkty</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Produkty – Silence Elektrická vozidla</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/produkty.css">
 </head>
-
 <body>
+  <nav class="site-nav">
+    <a href="index.html" class="logo">SILENCE</a>
+    <ul class="nav-links">
+      <li><a href="index.html">Úvod</a></li>
+      <li><a href="o-nas.html">O nás</a></li>
+      <li><a href="produkty.html" class="active">Produkty</a></li>
+      <li><a href="kontakty.html">Kontakty</a></li>
+    </ul>
+    <a class="nav-cta" href="kontakty.html">Domluvit test →</a>
+    <button class="hamburger" id="hamburger" aria-label="Menu" aria-controls="mobileMenu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
 
-<header class="top-nav">
-	<a href="index.html" class="brand">
-		<img src="obrazky/Logo_Silence_2 tintes.png" alt="SILENCE" style="height:110px;">
-	</a>
-	<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
-	<nav class="nav-right" id="site-nav" aria-label="Hlavni navigace">
-		<a href="index.html">Uvod</a>
-		<a href="o-nas.html">O nas</a>
-		<a href="produkty.html" class="is-active" aria-current="page">Produkty</a>
-		<a href="kontakty.html">Kontakty</a>
-	</nav>
-</header>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">Úvod</a>
+    <a href="o-nas.html">O nás</a>
+    <a href="produkty.html" class="active">Produkty</a>
+    <a href="kontakty.html">Kontakty</a>
+  </div>
 
-<section class="hero fade-in" style="min-height: 60vh;">
-	<h1>Produkty Silence</h1>
-	<p>Zakladni prehled modelu S04 a S02. U modelu S04 jsou verze L6e a L7e, u modelu S02 najdete verze Cargo a Personal.</p>
-</section>
+  <main>
+    <section class="page-hero">
+      <div class="hero-copy fade-in">
+        <p class="eyebrow">Elektrická vozidla pro město</p>
+        <h1>Produkty<br>Silence.</h1>
+        <p class="hero-lead">Přehled modelů S04 a S02 v čistší, ekologičtější vizuální podobě. Tichý provoz, Battery Swap, nízké emise a moderní řešení pro městský život i firemní flotily.</p>
+        <div class="hero-actions">
+          <a href="kontakty.html" class="btn-primary">Domluvit test jízdu</a>
+          <a href="#modely" class="btn-ghost">Prohlédnout modely</a>
+        </div>
+        <div class="hero-metrics">
+          <div class="metric-card">
+            <span class="metric-label">Emise</span>
+            <strong>0 % lokální</strong>
+          </div>
+          <div class="metric-card">
+            <span class="metric-label">Baterie</span>
+            <strong>Battery Swap</strong>
+          </div>
+          <div class="metric-card">
+            <span class="metric-label">Dojezd</span>
+            <strong>až 149 km</strong>
+          </div>
+        </div>
+      </div>
 
-<section class="fade-in" style="padding: 40px 20px; max-width: 1100px; margin: 0 auto;">
-	<div class="values" style="display: flex; flex-direction: column; gap: 20px;">
-		<div class="value-box">
-			<h2>Silence S04</h2>
-			<p><strong>Typ:</strong> Elektricky nanocar</p>
-			<p><strong>Rok:</strong> 2020</p>
-			<p><strong>Cena:</strong> od 7.400 EUR</p>
-			<p><strong>Zaklad:</strong> Kompaktni mestske vozidlo s Battery Swap systemem a praktickym prostorem. Homologacni varianty L6e a L7e.</p>
-			<p>
-				<a class="btn" href="s04-cargo.html">S04 L7e</a>
-				<a class="btn" href="s04-personal.html" style="margin-left: 10px;">S04 L6e</a>
-			</p>
-		</div>
+      <div class="hero-visual fade-in delay-15">
+        <div class="visual-orb visual-orb--one"></div>
+        <div class="visual-orb visual-orb--two"></div>
+        <div class="visual-stack">
+          <article class="visual-card visual-card--large">
+            <div class="visual-card-badge">Prémiový nanocar</div>
+            <img src="obrazky/s04_white.3b76691c.webp" alt="Silence S04">
+            <div class="visual-card-caption">
+              <strong>S04</strong>
+              <span>kompaktní městský elektromobil</span>
+            </div>
+          </article>
+          <article class="visual-card visual-card--small">
+            <div class="visual-card-badge">Městský skútr</div>
+            <img src="obrazky/SO2_Cargo.png" alt="Silence S02 Cargo">
+            <div class="visual-card-caption">
+              <strong>S02</strong>
+              <span>efektivní provoz pro firmu i osobní použití</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
 
-		<div class="value-box">
-			<h2>Silence S02</h2>
-			<p><strong>Typ:</strong> Elektricky skutr</p>
-			<p><strong>Rok:</strong> 2024</p>
-			<p><strong>Cena:</strong> od 3.490 EUR</p>
-			<p><strong>Zaklad:</strong> Mestsky skutr se snadnym ovladanim, nizkymi naklady a Battery Swap technologii.</p>
-			<p>
-				<a class="btn" href="s02-cargo.html">S02 Cargo</a>
-				<a class="btn" href="s02-personal.html" style="margin-left: 10px;">S02 Personal</a>
-			</p>
-		</div>
-	</div>
-</section>
+    <section class="eco-strip fade-in">
+      <article class="eco-chip">
+        <span>Šetrné k městu</span>
+        <strong>tichý provoz a nulové lokální emise</strong>
+      </article>
+      <article class="eco-chip">
+        <span>Chytré nabíjení</span>
+        <strong>vyjímatelné baterie a rychlá výměna</strong>
+      </article>
+      <article class="eco-chip">
+        <span>Pro flotily</span>
+        <strong>spolehlivost pro každodenní nasazení</strong>
+      </article>
+    </section>
 
-<script src="js/script.js" defer></script>
+    <section class="collection-section" id="modely">
+      <div class="section-heading fade-in">
+        <div>
+          <p class="eyebrow">Řada modelů</p>
+          <h2>Vybrané produkty</h2>
+        </div>
+        <p>Každý model je navržený pro jiný způsob pohybu městem, ale všechny spojuje úsporný provoz, praktičnost a výrazný design.</p>
+      </div>
 
+      <div class="model-grid">
+        <article class="model-card model-card--green fade-in">
+          <div class="model-card-media">
+            <div class="model-tag">Elektrický nanocar</div>
+            <img src="obrazky/s04_white.3b76691c.webp" alt="Silence S04">
+          </div>
+          <div class="model-card-body">
+            <div class="model-head">
+              <div>
+                <p class="product-tag">S04</p>
+                <h3>Silence S04</h3>
+              </div>
+              <div class="product-price">
+                <span>Cena od</span>
+                <strong>7 400 EUR</strong>
+              </div>
+            </div>
+            <p>Kompaktní elektrický nanocar pro městské dojíždění, firemní využití i sdílenou mobilitu. Navržený pro pohodlný a tichý provoz s Battery Swap systémem.</p>
+            <div class="feature-pills">
+              <span>Battery Swap</span>
+              <span>L6e / L7e</span>
+              <span>až 149 km</span>
+            </div>
+            <div class="variant-links">
+              <a href="s04-cargo.html" class="variant-link">S04 L7e — detail</a>
+              <a href="s04-personal.html" class="variant-link variant-link--ghost">S04 L6e — detail</a>
+            </div>
+          </div>
+          <div class="model-variants">
+            <div class="variant-item">
+              <span>Homologace</span>
+              <strong>L7e</strong>
+            </div>
+            <div class="variant-item">
+              <span>Max. rychlost</span>
+              <strong>90 km/h</strong>
+            </div>
+            <div class="variant-item">
+              <span>Dojezd</span>
+              <strong>až 149 km</strong>
+            </div>
+            <div class="variant-item">
+              <span>ŘP</span>
+              <strong>B</strong>
+            </div>
+          </div>
+        </article>
+
+        <article class="model-card model-card--sand fade-in delay-15">
+          <div class="model-card-media">
+            <div class="model-tag">Elektrický skútr</div>
+            <img src="obrazky/SO2_Cargo.png" alt="Silence S02 Cargo">
+          </div>
+          <div class="model-card-body">
+            <div class="model-head">
+              <div>
+                <p class="product-tag">S02</p>
+                <h3>Silence S02</h3>
+              </div>
+              <div class="product-price">
+                <span>Cena od</span>
+                <strong>3 490 EUR</strong>
+              </div>
+            </div>
+            <p>Městský skútr s nízkými náklady, snadným ovládáním a variantami pro dopravu lidí i zásilek. Skvělé řešení pro logistiku, servis i každodenní dojíždění.</p>
+            <div class="feature-pills">
+              <span>0 emisí</span>
+              <span>Cargo / Personal</span>
+              <span>pracovní nasazení</span>
+            </div>
+            <div class="variant-links">
+              <a href="s02-cargo.html" class="variant-link">S02 Cargo — detail</a>
+              <a href="s02-personal.html" class="variant-link variant-link--ghost">S02 Personal — detail</a>
+            </div>
+          </div>
+          <div class="model-variants">
+            <div class="variant-item">
+              <span>Určení</span>
+              <strong>Doručování</strong>
+            </div>
+            <div class="variant-item">
+              <span>Max. rychlost</span>
+              <strong>45 km/h</strong>
+            </div>
+            <div class="variant-item">
+              <span>Dojezd</span>
+              <strong>až 75 km</strong>
+            </div>
+            <div class="variant-item">
+              <span>ŘP</span>
+              <strong>AM / A1</strong>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="comparison-section fade-in">
+      <div class="comparison-card">
+        <p class="eyebrow">Proč Silence</p>
+        <h2>Technologie, která dává smysl v městském provozu</h2>
+        <div class="comparison-grid">
+          <article>
+            <strong>Udržitelnost</strong>
+            <p>Elektrický pohon snižuje hluk i lokální emise a vytváří čistší prostředí v ulicích.</p>
+          </article>
+          <article>
+            <strong>Praktičnost</strong>
+            <p>Vyměnitelné baterie, jednoduché ovládání a výborná manévrovatelnost v centru města.</p>
+          </article>
+          <article>
+            <strong>Efektivita</strong>
+            <p>Navrženo pro každodenní provoz, kde rozhodují náklady, spolehlivost a rychlá obsluha.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <span class="logo footer-logo-small">SILENCE</span>
+    <p>© 2026 Silence – Elektrická vozidla</p>
+  </footer>
+
+  <script src="js/produkty.js" defer></script>
 </body>
 </html>
-
