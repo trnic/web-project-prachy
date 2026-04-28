@@ -319,7 +319,7 @@ nav a:hover {
 /* ===== Product page tweaks ===== */
 .product { display:flex; gap:32px; align-items:flex-start; margin: 10px 0; max-width: 1400px; margin-left: auto; margin-right: auto; }
 .product-image { flex: 0 0 220px; display:flex; align-items:center; justify-content:center; }
-.product-image img { width:200px; height:200px; object-fit:cover; border-radius:12px; box-shadow:0 12px 40px rgba(0,0,0,0.08); display:block; }
+.product-image img { width:200px; height: 200px; object-fit:cover; border-radius:12px; box-shadow:0 12px 40px rgba(0,0,0,0.08); display:block; }
 .product-info { 
     flex:1; 
     background: linear-gradient(135deg, #fff 0%, #f9fafb 100%); 
