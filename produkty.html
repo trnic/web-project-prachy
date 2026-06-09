@@ -5,11 +5,685 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Produkty – Silence Elektrická vozidla</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/produkty.css">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:            #f8f9f4;
+      --bg-secondary:  #eef1e6;
+      --bg-tertiary:   #e2e8d5;
+      --bg-dark:       #1a2112;
+      --text:          #1a2112;
+      --text-secondary:#4a5a3a;
+      --text-tertiary: #7a8a6a;
+      --text-light:    #f8f9f4;
+      --accent:        #5a7a2a;
+      --accent-light:  #8ab040;
+      --accent-pale:   #d4e8a0;
+      --border:        rgba(26,33,18,0.12);
+      --border-md:     rgba(26,33,18,0.22);
+      --radius-md:     8px;
+      --radius-lg:     14px;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ── NAV ── */
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.2rem 2.5rem;
+      border-bottom: 0.5px solid var(--border);
+      position: sticky;
+      top: 0;
+      background: rgba(248,249,244,0.93);
+      backdrop-filter: blur(14px);
+      z-index: 100;
+    }
+
+    .logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 22px;
+      letter-spacing: 3px;
+      color: var(--text);
+    }
+
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+
+    .nav-links a {
+      font-size: 13px;
+      color: var(--text-secondary);
+      letter-spacing: 0.3px;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+    .nav-links a.active { color: var(--accent); font-weight: 500; }
+
+    .nav-cta {
+      font-size: 12px;
+      font-weight: 500;
+      padding: 8px 18px;
+      border: 0.5px solid var(--accent);
+      border-radius: 20px;
+      cursor: pointer;
+      background: transparent;
+      color: var(--accent);
+      transition: background 0.2s, color 0.2s;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    .nav-cta:hover { background: var(--accent); color: var(--text-light); }
+
+    /* ── HAMBURGER ── */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 22px;
+      height: 1.5px;
+      background: var(--text);
+      transition: all 0.3s;
+    }
+
+    .hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      padding: 1.5rem 2.5rem;
+      border-bottom: 0.5px solid var(--border);
+      background: var(--bg);
+      gap: 16px;
+    }
+
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { font-size: 15px; color: var(--text-secondary); transition: color 0.2s; }
+    .mobile-menu a.active { color: var(--accent); }
+    .mobile-menu a:hover { color: var(--text); }
+
+    /* ── BUTTONS ── */
+    .btn-primary {
+      display: inline-block;
+      font-size: 13px;
+      font-weight: 500;
+      padding: 11px 24px;
+      background: var(--accent);
+      color: var(--text-light);
+      border: none;
+      border-radius: 22px;
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .btn-primary:hover { background: var(--accent-light); transform: translateY(-1px); }
+
+    .btn-ghost {
+      display: inline-block;
+      font-size: 13px;
+      font-weight: 400;
+      padding: 11px 24px;
+      background: transparent;
+      color: var(--text-secondary);
+      border: 0.5px solid var(--border-md);
+      border-radius: 22px;
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+    .eyebrow, .block-label {
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--text-tertiary);
+      margin-bottom: 1.2rem;
+    }
+
+    /* ── FADE-IN ── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── PAGE HEADER ── */
+    .page-header {
+      background: var(--bg-dark);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 380px;
+      border-bottom: 0.5px solid rgba(255,255,255,0.08);
+    }
+
+    .page-header-left {
+      padding: 4rem 2.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      border-right: 0.5px solid rgba(255,255,255,0.08);
+    }
+
+    .page-header .eyebrow { color: var(--accent-light); }
+
+    .page-header h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 80px;
+      line-height: 0.92;
+      letter-spacing: 1px;
+      margin-bottom: 1.5rem;
+      color: var(--text-light);
+    }
+
+    .page-header-sub {
+      font-size: 15px;
+      line-height: 1.75;
+      color: rgba(248,249,244,0.6);
+      max-width: 400px;
+    }
+
+    .page-header-right {
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-start;
+      padding: 2.5rem;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    /* ── ECO BADGE ── */
+    .eco-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      background: rgba(90,122,42,0.25);
+      border: 0.5px solid rgba(138,176,64,0.4);
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--accent-pale);
+      letter-spacing: 0.3px;
+    }
+
+    .eco-badge svg { flex-shrink: 0; }
+
+    /* ── FILTER BAR ── */
+    .filter-bar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 1rem 2.5rem;
+      border-bottom: 0.5px solid var(--border);
+      overflow-x: auto;
+      background: var(--bg);
+    }
+
+    .filter-label { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-tertiary); margin-right: 4px; white-space: nowrap; }
+
+    .filter-btn {
+      font-size: 12px;
+      font-weight: 500;
+      padding: 6px 16px;
+      border: 0.5px solid var(--border-md);
+      border-radius: 16px;
+      cursor: pointer;
+      background: transparent;
+      color: var(--text-secondary);
+      font-family: 'DM Sans', sans-serif;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+
+    .filter-btn:hover { border-color: var(--accent); color: var(--accent); }
+    .filter-btn.active { background: var(--accent); color: var(--text-light); border-color: var(--accent); }
+
+    /* ── ECO STATS BAR ── */
+    .eco-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-bottom: 0.5px solid var(--border);
+      background: var(--bg-secondary);
+    }
+
+    .eco-stat {
+      padding: 1.25rem 2.5rem;
+      border-right: 0.5px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .eco-stat:last-child { border-right: none; }
+
+    .eco-stat-icon {
+      width: 32px;
+      height: 32px;
+      background: var(--accent-pale);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .eco-stat-val {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 22px;
+      letter-spacing: 0.5px;
+      line-height: 1;
+      color: var(--accent);
+    }
+
+    .eco-stat-label { font-size: 11px; color: var(--text-tertiary); letter-spacing: 1px; text-transform: uppercase; margin-top: 2px; }
+
+    /* ── PRODUCT SECTION ── */
+    .product-section {
+      border-bottom: 0.5px solid var(--border);
+    }
+
+    .product-section.hidden { display: none; }
+
+    .product-hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-bottom: 0.5px solid var(--border);
+    }
+
+    .product-hero-left {
+      padding: 3.5rem 2.5rem;
+      border-right: 0.5px solid var(--border);
+    }
+
+    .product-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 10px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--accent-pale);
+      padding: 4px 10px;
+      border-radius: 10px;
+      margin-bottom: 1rem;
+    }
+
+    .product-hero-left h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 60px;
+      letter-spacing: 1px;
+      line-height: 0.95;
+      margin-bottom: 1rem;
+      color: var(--text);
+    }
+
+    .product-hero-left .tagline {
+      font-size: 15px;
+      color: var(--text-secondary);
+      line-height: 1.75;
+      margin-bottom: 2rem;
+      max-width: 380px;
+    }
+
+    .product-meta {
+      display: flex;
+      gap: 0;
+      margin-bottom: 2rem;
+      border: 0.5px solid var(--border);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+    }
+
+    .meta-item {
+      padding: 12px 20px;
+      border-right: 0.5px solid var(--border);
+      flex: 1;
+    }
+
+    .meta-item:last-child { border-right: none; }
+    .meta-label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-tertiary); margin-bottom: 3px; }
+    .meta-val { font-size: 15px; font-weight: 500; color: var(--text); }
+    .meta-val.green { color: var(--accent); }
+
+    .product-btns { display: flex; gap: 10px; flex-wrap: wrap; }
+
+    .product-hero-right {
+      background: var(--bg-secondary);
+      overflow: hidden;
+      position: relative;
+      min-height: 340px;
+    }
+
+    .product-hero-right img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+      padding: 2rem;
+      transition: transform 0.5s ease;
+    }
+
+    .product-hero-right:hover img { transform: scale(1.03); }
+
+    .product-hero-right .eco-label {
+      position: absolute;
+      top: 1.25rem;
+      right: 1.25rem;
+      background: var(--accent);
+      color: var(--text-light);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 5px 10px;
+      border-radius: 10px;
+    }
+
+    /* ── VARIANTS ── */
+    .variants-header {
+      padding: 1.5rem 2.5rem;
+      border-bottom: 0.5px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .variants-header span {
+      font-size: 11px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--text-tertiary);
+    }
+
+    .variants {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .variant {
+      padding: 2.5rem;
+      border-right: 0.5px solid var(--border);
+      transition: background 0.2s;
+      position: relative;
+    }
+
+    .variant:last-child { border-right: none; }
+    .variant:hover { background: var(--bg-secondary); }
+
+    .variant-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--accent);
+      background: var(--accent-pale);
+      padding: 3px 9px;
+      border-radius: 8px;
+      margin-bottom: 0.75rem;
+    }
+
+    .variant-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 28px;
+      letter-spacing: 0.5px;
+      margin-bottom: 1.5rem;
+      color: var(--text);
+    }
+
+    .spec-rows { display: flex; flex-direction: column; gap: 0; margin-bottom: 1.75rem; }
+
+    .spec-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 9px 0;
+      border-bottom: 0.5px solid var(--border);
+      font-size: 13px;
+    }
+
+    .spec-row:last-child { border-bottom: none; }
+    .spec-key { color: var(--text-secondary); }
+    .spec-val { font-weight: 500; }
+    .spec-val.green { color: var(--accent); }
+
+    /* ── ECO SECTION ── */
+    .eco-section {
+      background: var(--bg-dark);
+      border-bottom: 0.5px solid rgba(255,255,255,0.08);
+      padding: 3.5rem 2.5rem;
+    }
+
+    .eco-section-inner {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .eco-section h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 48px;
+      letter-spacing: 1px;
+      line-height: 0.95;
+      color: var(--text-light);
+      margin-bottom: 1rem;
+    }
+
+    .eco-section p {
+      font-size: 14px;
+      color: rgba(248,249,244,0.6);
+      line-height: 1.8;
+    }
+
+    .eco-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .eco-card {
+      background: rgba(90,122,42,0.15);
+      border: 0.5px solid rgba(138,176,64,0.25);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .eco-card:hover {
+      background: rgba(90,122,42,0.25);
+      border-color: rgba(138,176,64,0.45);
+    }
+
+    .eco-card-icon {
+      width: 36px;
+      height: 36px;
+      background: rgba(138,176,64,0.2);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+
+    .eco-card h3 { font-size: 13px; font-weight: 500; color: var(--accent-pale); margin-bottom: 0.4rem; }
+    .eco-card p { font-size: 12px; color: rgba(248,249,244,0.5); line-height: 1.6; }
+
+    /* ── COMPARE TABLE ── */
+    .compare-section {
+      border-bottom: 0.5px solid var(--border);
+    }
+
+    .compare-header {
+      padding: 2rem 2.5rem 1.5rem;
+      border-bottom: 0.5px solid var(--border);
+    }
+
+    .compare-header h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 32px;
+      letter-spacing: 1px;
+    }
+
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+    }
+
+    .compare-table th {
+      padding: 12px 2.5rem;
+      text-align: left;
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-tertiary);
+      border-bottom: 0.5px solid var(--border);
+      background: var(--bg-secondary);
+      font-weight: 500;
+    }
+
+    .compare-table th:first-child { width: 28%; }
+
+    .compare-table td {
+      padding: 12px 2.5rem;
+      border-bottom: 0.5px solid var(--border);
+      color: var(--text-secondary);
+      vertical-align: middle;
+    }
+
+    .compare-table td:first-child { color: var(--text); font-weight: 500; }
+    .compare-table tr:last-child td { border-bottom: none; }
+    .compare-table tr:hover td { background: var(--bg-secondary); }
+
+    .check { color: var(--accent); font-weight: 500; }
+    .cross { color: var(--text-tertiary); }
+
+    /* ── CTA BANNER ── */
+    .cta-banner {
+      background: var(--accent);
+      padding: 3rem 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      flex-wrap: wrap;
+      border-bottom: 0.5px solid var(--border);
+    }
+
+    .cta-banner h2 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 40px;
+      letter-spacing: 1px;
+      color: var(--text-light);
+      line-height: 1;
+      margin-bottom: 0.4rem;
+    }
+
+    .cta-banner p { font-size: 14px; color: rgba(248,249,244,0.75); }
+
+    .btn-white {
+      display: inline-block;
+      font-size: 13px;
+      font-weight: 500;
+      padding: 12px 26px;
+      background: var(--text-light);
+      color: var(--accent);
+      border: none;
+      border-radius: 22px;
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      transition: opacity 0.2s, transform 0.15s;
+      white-space: nowrap;
+    }
+
+    .btn-white:hover { opacity: 0.9; transform: translateY(-1px); }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 1.5rem 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 0.5px solid var(--border);
+    }
+
+    footer p { font-size: 12px; color: var(--text-tertiary); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.25rem; }
+      .nav-links, .nav-cta { display: none; }
+      .hamburger { display: flex; }
+
+      .page-header { grid-template-columns: 1fr; }
+      .page-header-left { padding: 2.5rem 1.25rem; border-right: none; border-bottom: 0.5px solid rgba(255,255,255,0.08); }
+      .page-header h1 { font-size: 56px; }
+      .page-header-right { padding: 1.5rem 1.25rem; }
+
+      .eco-stats { grid-template-columns: 1fr 1fr; }
+      .eco-stat { border-bottom: 0.5px solid var(--border); padding: 1rem 1.25rem; }
+      .eco-stat:nth-child(2) { border-right: none; }
+      .eco-stat:nth-child(3), .eco-stat:nth-child(4) { border-bottom: none; }
+      .eco-stat:nth-child(4) { border-right: none; }
+
+      .filter-bar { padding: 0.75rem 1.25rem; }
+
+      .product-hero { grid-template-columns: 1fr; }
+      .product-hero-left { border-right: none; border-bottom: 0.5px solid var(--border); padding: 2rem 1.25rem; }
+      .product-hero-right { min-height: 240px; }
+      .product-hero-left h2 { font-size: 48px; }
+      .product-meta { flex-wrap: wrap; }
+
+      .variants { grid-template-columns: 1fr; }
+      .variant { border-right: none; border-bottom: 0.5px solid var(--border); padding: 2rem 1.25rem; }
+
+      .eco-section { padding: 2.5rem 1.25rem; }
+      .eco-section-inner { grid-template-columns: 1fr; gap: 2rem; }
+      .eco-grid { grid-template-columns: 1fr 1fr; }
+
+      .compare-table th, .compare-table td { padding: 10px 1.25rem; }
+
+      .cta-banner { padding: 2rem 1.25rem; flex-direction: column; align-items: flex-start; }
+
+      footer { padding: 1.25rem; flex-direction: column; gap: 8px; text-align: center; }
+    }
+
+    @media (max-width: 480px) {
+      .eco-grid { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
-  <nav class="site-nav">
+
+  <nav>
     <a href="index.html" class="logo">SILENCE</a>
     <ul class="nav-links">
       <li><a href="index.html">Úvod</a></li>
@@ -17,8 +691,8 @@
       <li><a href="produkty.html" class="active">Produkty</a></li>
       <li><a href="kontakty.html">Kontakty</a></li>
     </ul>
-    <a class="nav-cta" href="kontakty.html">Domluvit test →</a>
-    <button class="hamburger" id="hamburger" aria-label="Menu" aria-controls="mobileMenu" aria-expanded="false">
+    <button class="nav-cta" onclick="window.location='kontakty.html'">Domluvit test →</button>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
   </nav>
@@ -30,6 +704,7 @@
     <a href="kontakty.html">Kontakty</a>
   </div>
 
+<<<<<<< HEAD
   <main>
     <section class="page-hero">
       <div class="hero-copy fade-in">
@@ -52,55 +727,158 @@
           <div class="metric-card">
             <span class="metric-label">100 %</span>
             <strong>Elektrický pohon</strong>
+=======
+  <!-- PAGE HEADER (dark) -->
+  <div class="page-header">
+    <div class="page-header-left fade-in">
+      <p class="eyebrow">Elektrická vozidla</p>
+      <h1>Čistá<br>energie.<br>Čistá<br>jízda.</h1>
+      <p class="page-header-sub">Modely S04 a S02 navržené pro město, firmy i sdílenou mobilitu — s nulovými lokálními emisemi.</p>
+    </div>
+    <div class="page-header-right fade-in" style="transition-delay:0.1s">
+      <div class="eco-badge">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <path d="M7 1C4 1 2 3.5 2 6c0 1.5.7 3 2 4l3 3 3-3c1.3-1 2-2.5 2-4 0-2.5-2-5-5-5z" fill="rgba(138,176,64,0.4)" stroke="#8ab040" stroke-width="1"/>
+          <path d="M5 7c0-1.1.9-2 2-2s2 .9 2 2" stroke="#8ab040" stroke-width="1.2" stroke-linecap="round"/>
+        </svg>
+        0 % lokální emise
+      </div>
+      <div class="eco-badge">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <circle cx="7" cy="7" r="5.5" stroke="#8ab040" stroke-width="1"/>
+          <path d="M7 4v3l2 1.5" stroke="#8ab040" stroke-width="1.2" stroke-linecap="round"/>
+        </svg>
+        Dojezd až 149 km
+      </div>
+      <div class="eco-badge">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <path d="M2 10l3-4 2 2 2-3 3 5H2z" stroke="#8ab040" stroke-width="1" stroke-linejoin="round"/>
+        </svg>
+        Vyrobeno v EU
+      </div>
+    </div>
+  </div>
+
+  <!-- ECO STATS -->
+  <div class="eco-stats fade-in">
+    <div class="eco-stat">
+      <div class="eco-stat-icon">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M8 2C5.2 2 3 4 3 7c0 1.3.5 2.5 1.3 3.4L8 14l3.7-3.6C12.5 9.5 13 8.3 13 7c0-3-2.2-5-5-5z" fill="none" stroke="#5a7a2a" stroke-width="1.3"/>
+          <circle cx="8" cy="7" r="1.8" fill="#5a7a2a"/>
+        </svg>
+      </div>
+      <div>
+        <div class="eco-stat-val">0 g/km</div>
+        <div class="eco-stat-label">CO₂ lokálně</div>
+      </div>
+    </div>
+    <div class="eco-stat">
+      <div class="eco-stat-icon">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <rect x="2" y="5" width="12" height="7" rx="1.5" stroke="#5a7a2a" stroke-width="1.3"/>
+          <path d="M5 5V4a3 3 0 016 0v1" stroke="#5a7a2a" stroke-width="1.3" stroke-linecap="round"/>
+          <circle cx="8" cy="8.5" r="1.5" fill="#5a7a2a"/>
+        </svg>
+      </div>
+      <div>
+        <div class="eco-stat-val">~1 €</div>
+        <div class="eco-stat-label">Nabití / 100 km</div>
+      </div>
+    </div>
+    <div class="eco-stat">
+      <div class="eco-stat-icon">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <circle cx="8" cy="8" r="6" stroke="#5a7a2a" stroke-width="1.3"/>
+          <path d="M8 5v3l2.5 1.5" stroke="#5a7a2a" stroke-width="1.3" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div>
+        <div class="eco-stat-val">149 km</div>
+        <div class="eco-stat-label">Max. dojezd</div>
+      </div>
+    </div>
+    <div class="eco-stat">
+      <div class="eco-stat-icon">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M4 8l3 3 5-6" stroke="#5a7a2a" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div>
+        <div class="eco-stat-val">100 %</div>
+        <div class="eco-stat-label">Elektrický pohon</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FILTER BAR -->
+  <div class="filter-bar">
+    <span class="filter-label">Filtr:</span>
+    <button class="filter-btn active" data-filter="all">Všechny modely</button>
+    <button class="filter-btn" data-filter="s04">S04 — Nanocar</button>
+    <button class="filter-btn" data-filter="s02">S02 — Skútr</button>
+    <button class="filter-btn" data-filter="cargo">Cargo</button>
+    <button class="filter-btn" data-filter="personal">Personal</button>
+  </div>
+
+  <!-- ═══════════════ S04 ═══════════════ -->
+  <div class="product-section" data-category="s04">
+
+    <div class="product-hero">
+      <div class="product-hero-left fade-in">
+        <span class="product-tag">
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><circle cx="5" cy="5" r="4" stroke="#5a7a2a" stroke-width="1.2"/><path d="M3 5.5l1.5 1.5L7 4" stroke="#5a7a2a" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Elektrický nanocar
+        </span>
+        <h2>Silence<br>S04</h2>
+        <p class="tagline">Kompaktní městské vozidlo s Battery Swap systémem. Pohodlí osobního auta s nulovými emisemi a minimálními provozními náklady.</p>
+        <div class="product-meta">
+          <div class="meta-item">
+            <div class="meta-label">Cena od</div>
+            <div class="meta-val green">7 400 EUR</div>
+          </div>
+          <div class="meta-item">
+            <div class="meta-label">Dojezd</div>
+            <div class="meta-val">až 149 km</div>
+          </div>
+          <div class="meta-item">
+            <div class="meta-label">Emise</div>
+            <div class="meta-val green">0 g/km</div>
+>>>>>>> 70d81f67fb0a273a19c380dc56d8961c79978867
           </div>
         </div>
-      </div>
-
-      <div class="hero-visual fade-in delay-15">
-        <div class="visual-orb visual-orb--one"></div>
-        <div class="visual-orb visual-orb--two"></div>
-        <div class="visual-stack">
-          <article class="visual-card visual-card--large">
-            <div class="visual-card-badge">Prémiový nanocar</div>
-            <img src="obrazky/s04_white.3b76691c.webp" alt="Silence S04">
-            <div class="visual-card-caption">
-              <strong>S04</strong>
-              <span>kompaktní městský elektromobil</span>
-            </div>
-          </article>
-          <article class="visual-card visual-card--small">
-            <div class="visual-card-badge">Městský skútr</div>
-            <img src="obrazky/SO2_Cargo.png" alt="Silence S02 Cargo">
-            <div class="visual-card-caption">
-              <strong>S02</strong>
-              <span>efektivní provoz pro firmu i osobní použití</span>
-            </div>
-          </article>
+        <div class="product-btns">
+          <a href="s04-cargo.html" class="btn-primary">S04 L7e — detail</a>
+          <a href="s04-personal.html" class="btn-ghost">S04 L6e — detail</a>
         </div>
       </div>
-    </section>
+      <div class="product-hero-right fade-in" style="transition-delay:0.15s">
+        <span class="eco-label">0 emisí</span>
+        <img src="obrazky/s04_white.3b76691c.webp" alt="Silence S04"
+             onerror="this.style.opacity='0'">
+      </div>
+    </div>
 
-    <section class="eco-strip fade-in">
-      <article class="eco-chip">
-        <span>Šetrné k městu</span>
-        <strong>tichý provoz a nulové lokální emise</strong>
-      </article>
-      <article class="eco-chip">
-        <span>Chytré nabíjení</span>
-        <strong>vyjímatelné baterie a rychlá výměna</strong>
-      </article>
-      <article class="eco-chip">
-        <span>Pro flotily</span>
-        <strong>spolehlivost pro každodenní nasazení</strong>
-      </article>
-    </section>
+    <div class="variants-header">
+      <span>Dostupné varianty</span>
+    </div>
 
-    <section class="collection-section" id="modely">
-      <div class="section-heading fade-in">
-        <div>
-          <p class="eyebrow">Řada modelů</p>
-          <h2>Vybrané produkty</h2>
+    <div class="variants">
+      <div class="variant fade-in" data-category="s04 personal">
+        <span class="variant-badge">
+          <svg width="8" height="8" viewBox="0 0 8 8" fill="none"><circle cx="4" cy="4" r="3" fill="#5a7a2a"/></svg>
+          L6e — Lehký quad
+        </span>
+        <div class="variant-name">S04 L6e</div>
+        <div class="spec-rows">
+          <div class="spec-row"><span class="spec-key">Max. rychlost</span><span class="spec-val">45 km/h</span></div>
+          <div class="spec-row"><span class="spec-key">Dojezd</span><span class="spec-val green">až 100 km</span></div>
+          <div class="spec-row"><span class="spec-key">Výkon motoru</span><span class="spec-val">6 kW</span></div>
+          <div class="spec-row"><span class="spec-key">Baterie</span><span class="spec-val">vyjímatelná</span></div>
+          <div class="spec-row"><span class="spec-key">Řidičský průkaz</span><span class="spec-val">AM / B</span></div>
+          <div class="spec-row"><span class="spec-key">Emise CO₂</span><span class="spec-val green">0 g/km</span></div>
         </div>
+<<<<<<< HEAD
         <p>Každý model je navržený pro jiný způsob pohybu městem, ale všechny spojuje úsporný provoz, praktičnost a výrazný design.</p>
         <p class="filter-line">Filtr: Všechny modely; S04 — Nanocar; S02 — Skútr; Cargo; Personal</p>
       </div>
@@ -309,16 +1087,344 @@
               </tr>
             </tbody>
           </table>
+=======
+        <a href="s04-personal.html" class="btn-ghost">Zobrazit detail →</a>
+      </div>
+      <div class="variant fade-in" style="transition-delay:0.1s" data-category="s04 cargo">
+        <span class="variant-badge">
+          <svg width="8" height="8" viewBox="0 0 8 8" fill="none"><circle cx="4" cy="4" r="3" fill="#5a7a2a"/></svg>
+          L7e — Těžký quad
+        </span>
+        <div class="variant-name">S04 L7e</div>
+        <div class="spec-rows">
+          <div class="spec-row"><span class="spec-key">Max. rychlost</span><span class="spec-val">90 km/h</span></div>
+          <div class="spec-row"><span class="spec-key">Dojezd</span><span class="spec-val green">až 149 km</span></div>
+          <div class="spec-row"><span class="spec-key">Výkon motoru</span><span class="spec-val">15 kW</span></div>
+          <div class="spec-row"><span class="spec-key">Baterie</span><span class="spec-val">vyjímatelná</span></div>
+          <div class="spec-row"><span class="spec-key">Řidičský průkaz</span><span class="spec-val">B</span></div>
+          <div class="spec-row"><span class="spec-key">Emise CO₂</span><span class="spec-val green">0 g/km</span></div>
+        </div>
+        <a href="s04-cargo.html" class="btn-ghost">Zobrazit detail →</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ═══════════════ S02 ═══════════════ -->
+  <div class="product-section" data-category="s02">
+
+    <div class="product-hero">
+      <div class="product-hero-left fade-in">
+        <span class="product-tag">
+          <svg width="10" height="10" viewBox="0 0 10 10" fill="none"><circle cx="5" cy="5" r="4" stroke="#5a7a2a" stroke-width="1.2"/><path d="M3 5.5l1.5 1.5L7 4" stroke="#5a7a2a" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Elektrický skútr
+        </span>
+        <h2>Silence<br>S02</h2>
+        <p class="tagline">Městský skútr s Battery Swap technologií. Nízké provozní náklady, žádný hluk a nulové lokální emise pro každodenní dojíždění.</p>
+        <div class="product-meta">
+          <div class="meta-item">
+            <div class="meta-label">Cena od</div>
+            <div class="meta-val green">3 490 EUR</div>
+          </div>
+          <div class="meta-item">
+            <div class="meta-label">Dojezd</div>
+            <div class="meta-val">až 75 km</div>
+          </div>
+          <div class="meta-item">
+            <div class="meta-label">Emise</div>
+            <div class="meta-val green">0 g/km</div>
+          </div>
+        </div>
+        <div class="product-btns">
+          <a href="s02-cargo.html" class="btn-primary">S02 Cargo — detail</a>
+          <a href="s02-personal.html" class="btn-ghost">S02 Personal — detail</a>
+>>>>>>> 70d81f67fb0a273a19c380dc56d8961c79978867
         </div>
       </div>
-    </section>
-  </main>
+      <div class="product-hero-right fade-in" style="transition-delay:0.15s">
+        <span class="eco-label">0 emisí</span>
+        <img src="obrazky/SO2_Cargo.png" alt="Silence S02 Cargo"
+             onerror="this.style.opacity='0'">
+      </div>
+    </div>
 
-  <footer class="site-footer">
-    <span class="logo footer-logo-small">SILENCE</span>
+    <div class="variants-header">
+      <span>Dostupné varianty</span>
+    </div>
+
+    <div class="variants">
+      <div class="variant fade-in" data-category="s02 cargo">
+        <span class="variant-badge">
+          <svg width="8" height="8" viewBox="0 0 8 8" fill="none"><circle cx="4" cy="4" r="3" fill="#5a7a2a"/></svg>
+          Doručování a logistika
+        </span>
+        <div class="variant-name">S02 Cargo</div>
+        <div class="spec-rows">
+          <div class="spec-row"><span class="spec-key">Max. rychlost</span><span class="spec-val">45 km/h</span></div>
+          <div class="spec-row"><span class="spec-key">Dojezd</span><span class="spec-val green">až 75 km</span></div>
+          <div class="spec-row"><span class="spec-key">Nosnost</span><span class="spec-val">zvýšená</span></div>
+          <div class="spec-row"><span class="spec-key">Nabíjení</span><span class="spec-val">swap baterie</span></div>
+          <div class="spec-row"><span class="spec-key">Řidičský průkaz</span><span class="spec-val">AM / A1</span></div>
+          <div class="spec-row"><span class="spec-key">Emise CO₂</span><span class="spec-val green">0 g/km</span></div>
+        </div>
+        <a href="s02-cargo.html" class="btn-ghost">Zobrazit detail →</a>
+      </div>
+      <div class="variant fade-in" style="transition-delay:0.1s" data-category="s02 personal">
+        <span class="variant-badge">
+          <svg width="8" height="8" viewBox="0 0 8 8" fill="none"><circle cx="4" cy="4" r="3" fill="#5a7a2a"/></svg>
+          Každodenní dojíždění
+        </span>
+        <div class="variant-name">S02 Personal</div>
+        <div class="spec-rows">
+          <div class="spec-row"><span class="spec-key">Max. rychlost</span><span class="spec-val">45 km/h</span></div>
+          <div class="spec-row"><span class="spec-key">Dojezd</span><span class="spec-val green">až 75 km</span></div>
+          <div class="spec-row"><span class="spec-key">Sedadla</span><span class="spec-val">2 osoby</span></div>
+          <div class="spec-row"><span class="spec-key">Nabíjení</span><span class="spec-val">swap baterie</span></div>
+          <div class="spec-row"><span class="spec-key">Řidičský průkaz</span><span class="spec-val">AM / A1</span></div>
+          <div class="spec-row"><span class="spec-key">Emise CO₂</span><span class="spec-val green">0 g/km</span></div>
+        </div>
+        <a href="s02-personal.html" class="btn-ghost">Zobrazit detail →</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ECO SECTION (dark) -->
+  <div class="eco-section fade-in">
+    <div class="eco-section-inner">
+      <div>
+        <h2>Proč jezdit elektricky?</h2>
+        <p>Každý kilometr s SILENCE je kilometr bez emisí, bez hluku a s minimálními náklady.</p>
+      </div>
+      <div class="eco-grid">
+        <div class="eco-card">
+          <div class="eco-card-icon">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+              <path d="M9 2C6.2 2 4 4.2 4 7c0 3.7 5 9 5 9s5-5.3 5-9c0-2.8-2.2-5-5-5z" stroke="#8ab040" stroke-width="1.3"/>
+              <circle cx="9" cy="7" r="2" stroke="#8ab040" stroke-width="1.3"/>
+            </svg>
+          </div>
+          <h3>Nulové emise</h3>
+          <p>0 g CO₂ lokálně. Čistší vzduch pro každé město.</p>
+        </div>
+        <div class="eco-card">
+          <div class="eco-card-icon">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+              <path d="M4 9h10M9 4v10" stroke="#8ab040" stroke-width="1.5" stroke-linecap="round"/>
+              <circle cx="9" cy="9" r="7" stroke="#8ab040" stroke-width="1.3"/>
+            </svg>
+          </div>
+          <h3>Úspora nákladů</h3>
+          <p>Nabití vyjde přibližně na 1 €/100 km oproti 10–15 € u benzínu.</p>
+        </div>
+        <div class="eco-card">
+          <div class="eco-card-icon">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+              <rect x="3" y="5" width="12" height="8" rx="2" stroke="#8ab040" stroke-width="1.3"/>
+              <path d="M6 5V4a3 3 0 016 0v1" stroke="#8ab040" stroke-width="1.3" stroke-linecap="round"/>
+              <path d="M7 9h4" stroke="#8ab040" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3>Swap baterie</h3>
+          <p>Vyjímatelná baterie s kolečky — nabíjejte kdekoliv.</p>
+        </div>
+        <div class="eco-card">
+          <div class="eco-card-icon">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+              <path d="M3 15l4-5 3 3 3-4 4 6H3z" stroke="#8ab040" stroke-width="1.3" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3>Tichý provoz</h3>
+          <p>Elektrický motor = žádný hluk. Příjemnější město pro všechny.</p>
+        </div>
+        <div class="eco-card">
+          <div class="eco-card-icon">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+              <circle cx="9" cy="9" r="7" stroke="#8ab040" stroke-width="1.3"/>
+              <path d="M6 9l2 2 4-4" stroke="#8ab040" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3>Evropská výroba</h3>
+          <p>Vyrobeno ve Španělsku dle přísných EU standardů kvality.</p>
+        </div>
+        <div class="eco-card">
+          <div class="eco-card-icon">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+              <path d="M9 3v12M3 9h12" stroke="#8ab040" stroke-width="1.5" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <h3>Nízká údržba</h3>
+          <p>Žádný olej, méně pohyblivých dílů, nižší servisní náklady.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- COMPARE TABLE -->
+  <div class="compare-section fade-in">
+    <div class="compare-header">
+      <p class="block-label">Přehled</p>
+      <h2>Porovnání modelů</h2>
+    </div>
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>Parametr</th>
+          <th>S04 L6e</th>
+          <th>S04 L7e</th>
+          <th>S02 Cargo</th>
+          <th>S02 Personal</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Max. rychlost</td>
+          <td>45 km/h</td>
+          <td>90 km/h</td>
+          <td>45 km/h</td>
+          <td>45 km/h</td>
+        </tr>
+        <tr>
+          <td>Dojezd</td>
+          <td>100 km</td>
+          <td>149 km</td>
+          <td>75 km</td>
+          <td>75 km</td>
+        </tr>
+        <tr>
+          <td>Cena od</td>
+          <td>7 400 EUR</td>
+          <td>na dotaz</td>
+          <td>3 490 EUR</td>
+          <td>3 490 EUR</td>
+        </tr>
+        <tr>
+          <td>Řidičský průkaz</td>
+          <td>AM / B</td>
+          <td>B</td>
+          <td>AM / A1</td>
+          <td>AM / A1</td>
+        </tr>
+        <tr>
+          <td>Swap baterie</td>
+          <td class="check">✓ Ano</td>
+          <td class="check">✓ Ano</td>
+          <td class="check">✓ Ano</td>
+          <td class="check">✓ Ano</td>
+        </tr>
+        <tr>
+          <td>Emise CO₂</td>
+          <td class="check">0 g/km</td>
+          <td class="check">0 g/km</td>
+          <td class="check">0 g/km</td>
+          <td class="check">0 g/km</td>
+        </tr>
+        <tr>
+          <td>Určení</td>
+          <td>Osobní</td>
+          <td>Osobní / Firma</td>
+          <td>Logistika</td>
+          <td>Dojíždění</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- CTA BANNER -->
+  <div class="cta-banner fade-in">
+    <div>
+      <h2>Vyzkoušejte to sami.</h2>
+      <p>Domluvte si testovací jízdu zdarma — bez závazků, přímo v Kolíně.</p>
+    </div>
+    <a href="kontakty.html" class="btn-white">Domluvit test jízdu →</a>
+  </div>
+
+  <footer>
+    <span class="logo" style="font-size:16px;">SILENCE</span>
     <p>© 2026 Silence – Elektrická vozidla</p>
   </footer>
 
-  <script src="js/produkty.js" defer></script>
+  <script>
+    // ── Hamburger ──
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    hamburger.addEventListener('click', () => {
+      hamburger.classList.toggle('open');
+      mobileMenu.classList.toggle('open');
+    });
+
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        hamburger.classList.remove('open');
+        mobileMenu.classList.remove('open');
+      });
+    });
+
+    // ── Scroll fade-in ──
+    const fadeEls = document.querySelectorAll('.fade-in');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    fadeEls.forEach(el => observer.observe(el));
+
+    setTimeout(() => {
+      fadeEls.forEach(el => {
+        if (el.getBoundingClientRect().top < window.innerHeight) {
+          el.classList.add('visible');
+        }
+      });
+    }, 100);
+
+    // ── Filter ──
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const productSections = document.querySelectorAll('.product-section');
+    const variants = document.querySelectorAll('.variant');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const filter = btn.dataset.filter;
+
+        // Show/hide product sections
+        productSections.forEach(section => {
+          if (filter === 'all') {
+            section.classList.remove('hidden');
+          } else {
+            const cat = section.dataset.category || '';
+            section.classList.toggle('hidden', !cat.includes(filter));
+          }
+        });
+
+        // Show/hide individual variants
+        variants.forEach(variant => {
+          if (filter === 'all') {
+            variant.style.display = '';
+          } else {
+            const cat = variant.dataset.category || '';
+            variant.style.display = cat.includes(filter) ? '' : 'none';
+          }
+        });
+
+        // Scroll to first visible section
+        const firstVisible = document.querySelector('.product-section:not(.hidden)');
+        if (firstVisible && filter !== 'all') {
+          setTimeout(() => {
+            firstVisible.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }, 50);
+        }
+      });
+    });
+  </script>
+
 </body>
 </html>
